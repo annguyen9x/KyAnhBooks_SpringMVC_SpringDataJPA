@@ -74,8 +74,10 @@ public class SachServiceImpl implements SachService {
 
 	@Override
 	public List<Sach> dsSachTheoLoaiSach(String maLoaiSach) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Sach> sachs = null;
+		sachs = sachRepository.findSachByMaLoaiSach(maLoaiSach);
+		System.out.println("dsSachTheoLoaiSach-sach.size: " + sachs.size());
+		return sachs;
 	}
 
 	@Override

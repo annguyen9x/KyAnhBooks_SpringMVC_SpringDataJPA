@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<div class="hotrokh_giamgia">
+
+<div class="hotrokh_sachNoiBat">
 	<div class="col-md-12 col-sm-12 col-xs-12 padding-0 my_border hotro_kh">
 		<div class="top">
 			<h2>
@@ -26,7 +27,7 @@
 					</li>
 					<li class="list-li">
 						<span class="glyphicon glyphicon-phone-alt" style="color:#ff5400;"></span>
-						<span>(84)98.362.9915</span>
+						<span>(84)92.910.9072</span>
 					</li>
 					<li class="list-li">
 						<span>

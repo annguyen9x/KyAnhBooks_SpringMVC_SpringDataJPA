@@ -18,7 +18,7 @@
 			<li>
 				<span class="glyphicon glyphicon-ok" style="font-size:10px">&nbsp;</span>
 				<span>
-					<a href="sp_cungloai.jsp" class="text-a">
+					<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=${loaiSach.maLoaiSach}" class="text-a">
 						${loaiSach.tenLoaiSach} 
 					</a>
 				</span>

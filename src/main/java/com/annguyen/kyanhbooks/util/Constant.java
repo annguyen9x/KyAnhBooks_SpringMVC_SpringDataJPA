@@ -6,6 +6,9 @@ public class Constant {
 	public interface Path{
 		//Root Path KyAnhBook
 		public static final String KYANHBOOKS_ROOT_PATH = "/KyAnhBooks/";
+
+		//Root Path KyAnhBook + Menu LoaiSach
+		public static final String KYANHBOOKS_ROOT_PATH_MENU_LOAISACH = "/KyAnhBooks/MenuLoaiSach/";
 		
 		//View User
 		public static String USER_VIEW_ROOT_PATH = "/WEB-INF/views/user/";

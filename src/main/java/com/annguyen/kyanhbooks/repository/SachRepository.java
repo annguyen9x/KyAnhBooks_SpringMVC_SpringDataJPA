@@ -27,4 +27,6 @@ public interface SachRepository extends JpaRepository<Sach, String> {
 			+ "ORDER BY donGia DESC "
 			+ "LIMIT 0, ?")
 	List<Sach> dsSachTheoMaLoaiSach(String maSach, int soLuong);
+	
+	List<Sach> findSachByMaLoaiSach(String maLoaiSach);
 }

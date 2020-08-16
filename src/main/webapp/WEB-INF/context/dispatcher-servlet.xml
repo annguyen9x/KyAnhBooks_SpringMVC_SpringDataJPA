@@ -16,10 +16,6 @@
 	
 	<jpa:repositories base-package="com.annguyen.kyanhbooks.repository" /> <!-- scan for repository package -->
 	
-	<!-- Begin: Khai bao thư mục chứa tài nguyên: css,js -->
-	<mvc:resources mapping="/commonResources/**" location="/common/" />
-	<!-- End: Khai bao thư mục chứa tài nguyên: css,js -->
-	
 	<!-- Begin: viewResolver của phần user -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -39,4 +35,18 @@
 		</property>
 	</bean>
 	<!--End: config template cho phần quản trị(Admin) -->
+	
+	<!-- Begin: Khai báo thư mục chứa tài nguyên: css,js -->
+	<mvc:resources mapping="/commonResources/**" location="/common/" />
+	<!-- End: Khai báo thư mục chứa tài nguyên: css,js -->
+	
+	<!-- Begin: Request trước khi đến các Controller có URL "../MenuLoaiSach/**" sẽ đi qua class kế thừa "HandlerInterceptor" (giống ServletFilter) để load menu LoaiSach -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/MenuLoaiSach/**"/>
+			 <!-- <mvc:exclude-mapping path="/KhachHang/abc"/>--> <!-- các URL sẽ không đi qua interceptor -->
+			<bean class="com.annguyen.kyanhbooks.iterceptor.MenuHandle" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<!-- End: Request trước khi đến các Controller có URL "../MenuLoaiSach/**" sẽ đi qua class kế thừa "HandlerInterceptor" (giống ServletFilter) để load menu LoaiSach -->
 </beans>

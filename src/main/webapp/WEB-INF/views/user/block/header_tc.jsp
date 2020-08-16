@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/views/user/init.jsp" %>
 
+<%
+	int menuNgangId = Constant.MenuNgang.TRANG_CHU_NUMBER;
+	if( request.getAttribute("menuNgangId") != null ){
+		menuNgangId = Integer.parseInt(request.getAttribute("menuNgangId").toString());
+	}
+%>
+
 <header id="header" class="header"> 
 	<!-- start top-header -->
 	<section class="top-header clearfix">	
@@ -31,7 +38,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-sm-12 col-xs-12">
-					<a href="trangchu.jsp">
+					<a href="./">
 						<img src="${userStaticRootPath}img/logo/logo.png">
 					</a>
 				</div>
@@ -76,19 +83,19 @@
 						<div class="collapse navbar-collapse sua_collapse" id="navbarMnN"> 
 							<ul class="nav navbar-nav sua_ul">
 								<li>
-									<a href="./" class="a_menu_ngang"><%=Constant.MenuNgang.TRANG_CHU %></a>
+									<a href="./" class="a_menu_ngang" id="trangChu"><%=Constant.MenuNgang.TRANG_CHU %></a>
 								</li>
 								<li>
-									<a href="menuNgang/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="a_menu_ngang"><%=Constant.MenuNgang.GIOI_THIEU %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="a_menu_ngang" id="gioiThieu"><%=Constant.MenuNgang.GIOI_THIEU %></a>
 								</li>
 								<li>
-									<a href="menuNgang/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="a_menu_ngang"><%=Constant.MenuNgang.DICH_VU %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="a_menu_ngang" id="dichVu"><%=Constant.MenuNgang.DICH_VU %></a>
 								</li>
 								<li>
-									<a href="menuNgang/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="a_menu_ngang"><%=Constant.MenuNgang.HUONG_DAN_MUA_HANG %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="a_menu_ngang" id="huongDanMuaHang"><%=Constant.MenuNgang.HUONG_DAN_MUA_HANG %></a>
 								</li>
 								<li>
-									<a href="menuNgang/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="a_menu_ngang"><%=Constant.MenuNgang.LIEN_HE %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="a_menu_ngang" id="lienHe"><%=Constant.MenuNgang.LIEN_HE %></a>
 								</li>
 							</ul>
 						</div>
@@ -120,3 +127,28 @@
 	</div>
 </section>
 <!-- end menu_sp_hienthi, slideShow -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		/* Begin: tô màu chữ khi click vào các tab của menu ngang */
+		var menuNgangId = <%=menuNgangId%>;
+		
+		if( menuNgangId == <%=Constant.MenuNgang.GIOI_THIEU_NUMBER%> ){
+			$("#gioiThieu").css('background-color','#F47920');
+		}
+		else if( menuNgangId == <%=Constant.MenuNgang.DICH_VU_NUMBER%> ){
+			$("#dichVu").css('background-color','#F47920');
+		}
+		else if( menuNgangId == <%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER%> ){
+			$("#huongDanMuaHang").css('background-color','#F47920');
+		}
+		else if( menuNgangId == <%=Constant.MenuNgang.LIEN_HE_NUMBER%> ){
+			$("#lienHe").css('background-color','#F47920');
+		}
+		else{
+			$("#trangChu").css('background-color','#F47920');
+		}
+		/* End: tô màu chữ khi click vào các tab của menu ngang */
+	});
+</script>

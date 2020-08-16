@@ -9,7 +9,7 @@
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="group_footer">
 					<div class="top_footer logo_footer">
-						<a href="trangchu.jsp" class="text-a">
+						<a href="${kyanhbooksRootPath}" class="text-a">
 							<img src="${kyanhbooksRootPath}${userStaticRootPath}img/logo/logofooter.png">
 						</a>
 					</div>
@@ -46,26 +46,26 @@
 					<ul>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="gioi_thieu.jsp" class="text-a">
-								Giới Thiệu
+							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.GIOI_THIEU %>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="huongdan_muahang.jsp" class="text-a">
-								Hướng Dẫn Mua Hàng, Thanh Toán
+							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG %>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="dich_vu.jsp" class="text-a">
-								Dịch vụ
+							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.DICH_VU %>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="lien_he.jsp" class="text-a">
-								Liên Hệ
+							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.LIEN_HE %>
 							</a>
 						</li>
 					</ul>

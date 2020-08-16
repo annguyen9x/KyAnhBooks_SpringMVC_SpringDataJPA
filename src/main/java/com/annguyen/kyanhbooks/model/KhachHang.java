@@ -2,6 +2,7 @@ package com.annguyen.kyanhbooks.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,13 +15,28 @@ public class KhachHang {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "MaKH")
 	private int maKH;
+	
+	@Column(name = "TenKH")
 	private String tenKH;
+	
+	@Column(name = "MatKhau")
 	private String matKhau;
+	
+	@Column(name = "Email")
 	private String email;
+	
+	@Column(name = "DienThoai")
 	private String dienThoai;
+	
+	@Column(name = "GioiTinh")
 	private String gioiTinh;
+	
+	@Column(name = "NgaySinh")
 	private Date ngaySinh;
+	
+	@Column(name = "DiaChi")
 	private String diaChi;
 	
 	public KhachHang() {

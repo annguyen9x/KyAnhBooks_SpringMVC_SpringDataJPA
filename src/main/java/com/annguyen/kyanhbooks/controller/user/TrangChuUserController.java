@@ -40,21 +40,38 @@ public class TrangChuUserController {
 		return "trangchu";
 	}
 	
-	@RequestMapping("/menuNgang/{menuid}")
-	public String chiTietMenuNgang(@PathVariable int  menuid, Model model) {
+	@RequestMapping("/MenuLoaiSach/menuNgang/{menuNgangId}")
+	public String chiTietMenuNgang(@PathVariable int  menuNgangId, Model model) {
 		String viewResult = "";
-		if(menuid == Constant.MenuNgang.GIOI_THIEU_NUMBER ) {
+		if(menuNgangId == Constant.MenuNgang.GIOI_THIEU_NUMBER ) {
+			model.addAttribute("menuNgangId", Constant.MenuNgang.GIOI_THIEU_NUMBER);
 			viewResult = "gioi_thieu";
 		}
-		if(menuid == Constant.MenuNgang.DICH_VU_NUMBER ) {
+		if(menuNgangId == Constant.MenuNgang.DICH_VU_NUMBER ) {
+			model.addAttribute("menuNgangId", Constant.MenuNgang.DICH_VU_NUMBER);
 			viewResult = "dich_vu";
 		}
-		if(menuid == Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER ) {
+		if(menuNgangId == Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER ) {
+			model.addAttribute("menuNgangId", Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER);
 			viewResult = "huongdan_muahang";
 		}
-		if(menuid == Constant.MenuNgang.LIEN_HE_NUMBER ) {
+		if(menuNgangId == Constant.MenuNgang.LIEN_HE_NUMBER ) {
+			model.addAttribute("menuNgangId", Constant.MenuNgang.LIEN_HE_NUMBER);
 			viewResult = "lien_he";
 		}
 		return viewResult;
+	}
+	
+	@RequestMapping("/MenuLoaiSach/sachTheoLoaiSach")
+	public String sachTheoLoaiSach(@RequestParam("MaLS") String maLoaiSach, Model model) {
+		System.out.println("AAAA");
+		List<Sach> sachs = sachService.dsSachTheoLoaiSach(maLoaiSach);
+		List<Sach> sachNoiBat = sachService.dsSachTheoLoaiDs( Constant.TrangChu.SACH_NOI_BAT_NUMBER, Constant.TrangChu.SACH_NOI_BAT);
+		
+		model.addAttribute("SachTheoLoaiSach", sachs);
+		model.addAttribute("SachNoiBat", sachNoiBat);
+		model.addAttribute("MaLoaiSach", maLoaiSach);
+		
+		return "sp_cungloai";
 	}
 }

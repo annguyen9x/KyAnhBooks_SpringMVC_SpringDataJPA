@@ -32,14 +32,14 @@
 <body>
 	<div class="wrapper">
 		<!-- header  -->
-		<jsp:include page="./block/header.jsp" />
+		<jsp:include page="${userViewBlockPath}header.jsp" />
 		<!-- kt header  -->
 		
 		<section class="main_center main_sp_cungloai">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-4 col-xs-12 col-md-push-9 col-sm-push-8 padding-0" style="margin-top:35px; padding-left:20px">
-						<jsp:include page="./block/hotro_khachhang.jsp"/>
+						<jsp:include page="${userViewBlockPath}hotro_khachhang.jsp"/>
 					</div>
 					<div class="col-md-9 col-sm-8 col-xs-12 col-md-pull-3 col-sm-pull-4 padding-0 main_title_line">
 						<!-- phần top -->
@@ -331,7 +331,7 @@
 		</section>
 
 		<!-- footer  -->
-		<jsp:include page="./block/footer.jsp" />
+		<jsp:include page="${userViewBlockPath}footer.jsp" />
 		<!-- kt footer  -->
 	</div>
 </body>

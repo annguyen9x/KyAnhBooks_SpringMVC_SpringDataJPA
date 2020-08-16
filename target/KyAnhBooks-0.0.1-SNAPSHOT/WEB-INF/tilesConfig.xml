@@ -3,31 +3,16 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<!-- bigin: phần các trang user -->
-	<definition name="base.user.definition" template="/WEB-INF/tiles/layouts/userLayout.jsp">
-		<put-attribute name="title" value="" />
-		<put-attribute name="header" value="/WEB-INF/tiles/template/user/header.jsp" />
-		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/tiles/template/user/footer.jsp" />
-	</definition>
-	<definition name="indexUser" extends="base.user.definition">
-		<put-attribute name="title" value="KyAnhBooks - Trang chủ" />
-		<put-attribute name="header" value="/WEB-INF/tiles/template/user/header_tc.jsp" />
-		<put-attribute name="body" value="/view/user/view/trangchu.jsp" />
-	</definition>
-	<!-- end: phần các trang user -->
-	
 	<!-- bigin: phần các trang quản trị -->
 	<definition name="base.admin.definition" template="/WEB-INF/tiles/layouts/adminLayout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/tiles/template/_admin_footer.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/admin/block/_admin_footer.jsp" />
 	</definition>
 	<definition name="indexAdmin" extends="base.admin.definition">
 		<put-attribute name="title" value="Trang quản trị" />
-		<put-attribute name="body" value="" />
 	</definition>
 	<!-- end: phần các trang quản trị -->
 </tiles-definitions>

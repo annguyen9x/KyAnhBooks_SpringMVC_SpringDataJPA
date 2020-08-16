@@ -248,8 +248,8 @@
 							<div class="col-md-12 col-sm-12 col-xs-12 padding-0 top-list-sp">
 								<div class="top_sp_cungloai">
 									<h2>
-										<a href="sp_cungloai.jsp" class="text-a">
-											Sách văn học
+										<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="text-a">
+											<%=Constant.TrangChu.SACH_VAN_HOC %>
 										</a> 
 									</h2>
 								</div>
@@ -267,7 +267,7 @@
 									<div class="col-md-6 col-sm-12 col-xs-12 padding-0">
 										<!-- phần banner sách văn học -->
 										<div class="col-md-6 col-sm-6 col-xs-12 padding-0 banner_bottom">
-											<a href="chitiet_sp.jsp" class="hinh_svh">
+											<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="hinh_svh">
 												<img class="hinh" src="${userStaticRootPath}img/banner/banner_svh.jpg">
 											</a>
 										</div>
