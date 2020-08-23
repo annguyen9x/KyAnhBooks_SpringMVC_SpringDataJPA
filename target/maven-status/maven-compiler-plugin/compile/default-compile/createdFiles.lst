@@ -14,6 +14,7 @@ com\annguyen\kyanhbooks\service\SachService.class
 com\annguyen\kyanhbooks\util\Constant.class
 com\annguyen\kyanhbooks\service\LoaiSachService.class
 com\annguyen\kyanhbooks\controller\user\SachController.class
+com\annguyen\kyanhbooks\util\Constant$ThongBao.class
 com\annguyen\kyanhbooks\model\NhapSach.class
 com\annguyen\kyanhbooks\util\Constant$Path.class
 com\annguyen\kyanhbooks\controller\user\TrangChuUserController.class
