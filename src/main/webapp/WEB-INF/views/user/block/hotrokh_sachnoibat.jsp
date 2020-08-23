@@ -36,17 +36,17 @@
 					<li class="list-li">
 						<span>
 							<span class="glyphicon glyphicon-phone" style="color:#ed4c4c;"></span>
-							(84)34.724.4142
+							<%=Constant.CauHinh.GIA_TRI_SO_DIENTHOAI_CA_NHAN %>
 						</span>
 					</li>
 					<li class="list-li">
 						<span class="glyphicon glyphicon-phone-alt" style="color:#ff5400;"></span>
-						<span>(84)92.910.9072</span>
+						<span><%=Constant.CauHinh.GIA_TRI_SO_DIENTHOAI_SHOP %></span>
 					</li>
 					<li class="list-li">
 						<span>
 							<span class="fa fa-envelope" style="color:#15aabf;"></span>
-							kyanhbooks@gmail.com
+							<%=Constant.CauHinh.GIA_TRI_EMAIL_SHOP %>
 						</span>
 					</li>
 				</ul>
@@ -73,9 +73,9 @@
 			<div class="col-md-12 col-sm-12 col-xs-12 padding-0 grid_group_sp">
 				<div class="group_sp">
 					<div class="anh_sp">
-						<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="">
+						<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="">
 							<img class="anh" src="${kyanhbooksRootPath}${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
-								<a href="/SachKyAnh/ThemSachVaoGioHang?MaSach=<%=maSach %>&SoLuong=1" class="them_gh text-a" >
+								<a href="/KyAnhBoosk/ThemSachVaoGioHang?MaSach=<%=maSach%>&SoLuong=1" class="them_gh text-a" >
 									<span class="glyphicon glyphicon-shopping-cart"></span>
 									<span class="text"> Thêm vào giỏ</span>
 								</a>
@@ -83,15 +83,15 @@
 					</div>
 					<div class="tensp_giasp">
 						<h3 class="tensp">
-							<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="text-a">
-								<%=tenSach %>
+							<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="text-a">
+								<%=tenSach%>
 							</a>
 						</h3>	
 						<div class="giasp">
 							<span class="gia_goc">
-								<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+								<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 							</span>
-							<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="chi_tiet">
+							<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="chi_tiet">
 								Chi Tiết
 							</a>
 						</div>

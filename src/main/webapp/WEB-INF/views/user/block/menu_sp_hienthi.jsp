@@ -18,7 +18,7 @@
 			<li>
 				<span class="glyphicon glyphicon-ok" style="font-size:10px">&nbsp;</span>
 				<span>
-					<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=${loaiSach.maLoaiSach}" class="text-a">
+					<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_SACH_THEO_LOAISACH %>?MaLS=${loaiSach.maLoaiSach}" class="text-a">
 						${loaiSach.tenLoaiSach} 
 					</a>
 				</span>

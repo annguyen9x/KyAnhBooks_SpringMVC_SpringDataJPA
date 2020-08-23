@@ -17,19 +17,19 @@
 						<li class="list-li">
 							<span class="fa fa-map-marker" style="color:#fff;"> </span>
 							<a href="#" class="text-a">
-								phường Sông Trí, Tx. Kỳ anh, T. Hà Tĩnh
+								<%=Constant.CauHinh.GIA_TRI_DIA_CHI_SHOP_1 %>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="fa fa-phone" style="color:#fff;"> </span>
 							<a href="#" class="text-a">
-								034.724.4142
+								<%=Constant.CauHinh.GIA_TRI_SO_DIENTHOAI_CA_NHAN %>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="fa fa-envelope-o" style="color:#fff;"> </span>
 							<a href="#" class="text-a">
-								annguyen.htvn@gmail.com
+								<%=Constant.CauHinh.GIA_TRI_EMAIL_CA_NHAN %>
 							</a>
 						</li>
 					</ul>
@@ -46,26 +46,26 @@
 					<ul>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="text-a">
-								<%=Constant.MenuNgang.GIOI_THIEU %>
+							<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.GIOI_THIEU%>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="text-a">
-								<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG %>
+							<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG%>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="text-a">
-								<%=Constant.MenuNgang.DICH_VU %>
+							<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.DICH_VU%>
 							</a>
 						</li>
 						<li class="list-li">
 							<span class="glyphicon glyphicon-chevron-right" style="color:#fff; font-size: 1rem"></span>
-							<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="text-a">
-								<%=Constant.MenuNgang.LIEN_HE %>
+							<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="text-a">
+								<%=Constant.MenuNgang.LIEN_HE%>
 							</a>
 						</li>
 					</ul>

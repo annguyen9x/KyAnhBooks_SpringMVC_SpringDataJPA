@@ -3,6 +3,8 @@ package com.annguyen.kyanhbooks.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Pageable;
+
 import com.annguyen.kyanhbooks.model.Sach;
 
 public interface SachService {
@@ -21,13 +23,11 @@ public interface SachService {
 	
 	List<Sach> dsSachTheoLoaiDs(int soLuong, String loaiDsSach);
 	
-	List<Sach> dsSachTheoLoaiSach(String maLoaiSach);
+	long conutSachTheoLoaiSach(String maLoaiSach);
 	
-	List<Sach> dsTenSachTheoLoaiSach(String maLoaiSach);
+	List<Sach> dsSachTheoLoaiSach(String maLoaiSach, Pageable pageable);
 	
 	List<Sach> dsSachTheoTenSach(String tenSach);
-	
-	Map<Integer, List<Sach>> hienThiSachTheoLoaiSach(String maLoaiSach);
 	
 	List<Sach> timKiemSach(String tenSach);
 }

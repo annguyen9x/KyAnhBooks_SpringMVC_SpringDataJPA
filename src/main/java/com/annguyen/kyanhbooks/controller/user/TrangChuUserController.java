@@ -40,7 +40,7 @@ public class TrangChuUserController {
 		return "trangchu";
 	}
 	
-	@RequestMapping("/MenuLoaiSach/menuNgang/{menuNgangId}")
+	@RequestMapping(Constant.Path.KYANHBOOKS_ROOT_PATH_MENU_LOAISACH + Constant.Path.USER_CONTROLLER_MENU_NGANG + "/{menuNgangId}")
 	public String chiTietMenuNgang(@PathVariable int  menuNgangId, Model model) {
 		String viewResult = "";
 		if(menuNgangId == Constant.MenuNgang.GIOI_THIEU_NUMBER ) {
@@ -62,16 +62,4 @@ public class TrangChuUserController {
 		return viewResult;
 	}
 	
-	@RequestMapping("/MenuLoaiSach/sachTheoLoaiSach")
-	public String sachTheoLoaiSach(@RequestParam("MaLS") String maLoaiSach, Model model) {
-		System.out.println("AAAA");
-		List<Sach> sachs = sachService.dsSachTheoLoaiSach(maLoaiSach);
-		List<Sach> sachNoiBat = sachService.dsSachTheoLoaiDs( Constant.TrangChu.SACH_NOI_BAT_NUMBER, Constant.TrangChu.SACH_NOI_BAT);
-		
-		model.addAttribute("SachTheoLoaiSach", sachs);
-		model.addAttribute("SachNoiBat", sachNoiBat);
-		model.addAttribute("MaLoaiSach", maLoaiSach);
-		
-		return "sp_cungloai";
-	}
 }

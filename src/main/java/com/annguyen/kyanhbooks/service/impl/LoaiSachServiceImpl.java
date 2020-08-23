@@ -34,9 +34,10 @@ public class LoaiSachServiceImpl  implements LoaiSachService{
 	}
 
 	@Override
-	public LoaiSach getLoaiSach(String maLS) {
-		// TODO Auto-generated method stub
-		return null;
+	public LoaiSach getLoaiSach(String maLoaiSach) {
+		LoaiSach loaiSach = null;
+		loaiSach = loaiSachRepository.findLoaiSachByMaLoaiSach(maLoaiSach);
+		return loaiSach;
 	}
 
 	@Override

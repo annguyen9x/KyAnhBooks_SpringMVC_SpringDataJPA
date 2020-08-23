@@ -2,6 +2,7 @@ package com.annguyen.kyanhbooks.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -28,5 +29,9 @@ public interface SachRepository extends JpaRepository<Sach, String> {
 			+ "LIMIT 0, ?")
 	List<Sach> dsSachTheoMaLoaiSach(String maSach, int soLuong);
 	
-	List<Sach> findSachByMaLoaiSach(String maLoaiSach);
+	Long countSachByMaLoaiSach(String maLoaiSach);
+	
+	List<Sach> findSachByMaLoaiSach(String maLoaiSach, Pageable pageable);
+	
+	Sach findSachByMaSach(String maSach);
 }

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ include file="/WEB-INF/views/user/init.jsp" %>
 
 <div class="hotrokh_sachNoiBat">
 	<div class="col-md-12 col-sm-12 col-xs-12 padding-0 my_border hotro_kh">
@@ -22,17 +23,17 @@
 					<li class="list-li">
 						<span>
 							<span class="glyphicon glyphicon-phone" style="color:#ed4c4c;"></span>
-							(84)34.724.4142
+							<%=Constant.CauHinh.GIA_TRI_SO_DIENTHOAI_CA_NHAN %>
 						</span>
 					</li>
 					<li class="list-li">
 						<span class="glyphicon glyphicon-phone-alt" style="color:#ff5400;"></span>
-						<span>(84)92.910.9072</span>
+						<span><%=Constant.CauHinh.GIA_TRI_SO_DIENTHOAI_SHOP %></span>
 					</li>
 					<li class="list-li">
 						<span>
 							<span class="fa fa-envelope" style="color:#15aabf;"></span>
-							kyanhbooks@gmail.com
+							<%=Constant.CauHinh.GIA_TRI_EMAIL_SHOP %>
 						</span>
 					</li>
 				</ul>

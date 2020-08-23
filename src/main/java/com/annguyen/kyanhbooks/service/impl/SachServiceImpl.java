@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.annguyen.kyanhbooks.model.Sach;
@@ -46,8 +47,8 @@ public class SachServiceImpl implements SachService {
 
 	@Override
 	public Sach getSachTheoMaSach(String maSach) {
-		// TODO Auto-generated method stub
-		return null;
+		Sach sach = sachRepository.findSachByMaSach(maSach);
+		return sach;
 	}
 
 	@Override
@@ -71,12 +72,19 @@ public class SachServiceImpl implements SachService {
 		
 		return sachs;
 	}
+	
+	@Override
+	public long conutSachTheoLoaiSach(String maLoaiSach) {
+		long totalSachTheoLoaiSach = 0;
+		totalSachTheoLoaiSach = sachRepository.countSachByMaLoaiSach(maLoaiSach);
+		
+		return totalSachTheoLoaiSach;
+	}
 
 	@Override
-	public List<Sach> dsSachTheoLoaiSach(String maLoaiSach) {
+	public List<Sach> dsSachTheoLoaiSach(String maLoaiSach, Pageable pageable) {
 		List<Sach> sachs = null;
-		sachs = sachRepository.findSachByMaLoaiSach(maLoaiSach);
-		System.out.println("dsSachTheoLoaiSach-sach.size: " + sachs.size());
+		sachs = sachRepository.findSachByMaLoaiSach(maLoaiSach, pageable);
 		return sachs;
 	}
 
@@ -86,45 +94,6 @@ public class SachServiceImpl implements SachService {
 		return null;
 	}
 	
-	@Override
-	public List<Sach> dsTenSachTheoLoaiSach(String maLoaiSach) {
-		
-		return null;
-	}
-
-	@Override
-	public Map<Integer, List<Sach>> hienThiSachTheoLoaiSach(String maLoaiSach) {
-		List<Sach> sTen = this.dsTenSachTheoLoaiSach(maLoaiSach);
-		if( sTen != null ) {
-			Map<Integer, List<Sach>> mapSach = new HashMap<>();
-			for(int i = 0; i < sTen.size(); i++ ) {
-				List<Sach> sChiTiet = this.dsSachTheoTenSach(sTen.get(i).getTenSach());
-				if(sChiTiet != null) {
-					
-					List<Sach> listSach = new ArrayList<>();
-					for(int j = 0; j < sChiTiet.size(); j++) {
-						Sach sach = new Sach();
-						sach.setMaSach(sChiTiet.get(j).getMaSach());
-						sach.setTenSach(sChiTiet.get(j).getTenSach());
-						sach.setDonGia(sChiTiet.get(j).getDonGia());
-						sach.setSoLuong(sChiTiet.get(j).getSoLuong());
-						sach.setUrlHinh(sChiTiet.get(j).getUrlHinh());
-						sach.setNoiDung(sChiTiet.get(j).getNoiDung());
-						sach.setTacGia(sChiTiet.get(j).getTacGia());
-						sach.setNamXB(sChiTiet.get(j).getNamXB());
-						sach.setnXB(sChiTiet.get(j).getnXB());
-						sach.setMaLoaiSach(sChiTiet.get(j).getMaLoaiSach());
-						
-						listSach.add(sach);
-					}
-					mapSach.put(i, listSach);
-				}
-			}
-			return mapSach;
-		}
-		return null;
-	}
-
 	@Override
 	public List<Sach> timKiemSach(String tenSach) {
 		// TODO Auto-generated method stub

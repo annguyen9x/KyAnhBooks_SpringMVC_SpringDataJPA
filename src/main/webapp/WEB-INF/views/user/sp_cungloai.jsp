@@ -4,8 +4,8 @@
 <%@ include file="/WEB-INF/views/user/init.jsp" %>
 <%@ page import="com.annguyen.kyanhbooks.model.Sach" %>
 <%@ page import="com.annguyen.kyanhbooks.model.LoaiSach" %>
-<%@ page import="com.annguyen.kyanhbooks.service.LoaiSachService" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,21 +31,18 @@
 <!-- start my js -->
 	<script src="${kyanhbooksRootPath}${userStaticRootPath}js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
 <!-- end my js -->
-
 </head>
-
 <%
-	LoaiSachService loaiSachService = null;
 	LoaiSach loaiSach = null;
 	String maLoaiSach = "";
-	List<Sach> sachTheoLoaiSach = null;
-	if( request.getAttribute("MaLoaiSach") != null ){
-		maLoaiSach = request.getAttribute("MaLoaiSach").toString();
-		/* loaiSach  = loaiSachService.getLoaiSach(maLoaiSach); */
+	String tenLoaiSach = "";
+	
+	if( request.getAttribute("LoaiSach") != null ){
+		loaiSach = (LoaiSach)request.getAttribute("LoaiSach");
+		maLoaiSach = loaiSach.getMaLoaiSach();
+		tenLoaiSach = loaiSach.getTenLoaiSach();
 	}
-	if(request.getAttribute("SachTheoLoaiSach") != null ){
-		sachTheoLoaiSach = (List<Sach>)request.getAttribute("SachTheoLoaiSach");
-	}
+	
 %>
 					
 <body>
@@ -62,7 +59,7 @@
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-0 top_nd_trang">
 						<div class="top">
 							<h2>
-								<a href="#" class="text-a"><%= (loaiSach != null ) ? loaiSach.getTenLoaiSach() : "" %></a>
+								<a href="#" class="text-a"><%=tenLoaiSach%></a>
 							</h2>
 						</div>
 					</div>
@@ -70,70 +67,18 @@
 					<!-- phần nội dung trang -->
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-0 nd_trang">
 						<div class="row margin-0 my_border">
-							<!-- left: phần chi tiết sách -->
+							<!-- left: phần chi tiết danh sách sách -->
 							<div class="col-md-8 col-sm-8 col-xs-12 padding-0">
 								<section class="left">
 									<div class="row">
-										<div class="col-md-12 col-sm-12 col-xs-12 group-left-list-sp">
-											<%
-											if(sachTheoLoaiSach != null && sachTheoLoaiSach.size()> 0 ){
-												for(int i = 0; i < sachTheoLoaiSach.size(); i++)
-												{	
-													Sach sach = sachTheoLoaiSach.get(i);
-													String maSach = sach.getMaSach();
-													String tenSach = sach.getTenSach();
-													String donGia = DinhDang.MyNumberFormat(sach.getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-													String urlHinh = sach.getUrlHinh();
-											 %>
-												<!-- sản phẩm  -->
-												<div class="col-md-3 col-sm-4 col-xs-12 padding-0 grid_group_sp">
-														<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
-															<div class="group_sp my_border">
-																<div class="anh_sp">
-																	<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="">
-																		<img class="anh" src="${kyanhbooksRootPath}${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
-																		<%
-																		%>
-																			<a href="/SachKyAnh/ThemSachVaoGioHang?MaSach=<%=maSach%>&SoLuong=1&DuongDan=<%= request.getServletPath() %>" class="them_gh text-a" >
-																				<span class="glyphicon glyphicon-shopping-cart"></span>
-																				<span class="text"> Thêm vào giỏ</span>
-																			</a>
-																		<%
-																		%>
-																	</a>
-																</div>
-																<div class="tensp_giasp">
-																	<h3 class="tensp">
-																		<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="text-a">
-																			<%=tenSach %>
-																		</a>
-																	</h3>	
-																	<div class="giasp">
-																		<span class="gia_goc">
-																			<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
-																		</span>
-																		<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="chi_tiet">
-																			Chi Tiết
-																		</a>
-																	</div>
-																</div>
-															</div>
-														</div>
-												</div>
-												<!-- kt sản phẩm  -->
-											<%
-												}
-											}else{
-											%>
-												<p class="alert alert-danger">Không có sản phẩm nào trong loại sách này !</p>
-											<%
-											}
-											%>
+										<div id="danhSachSPCungLoai" class="col-md-12 col-sm-12 col-xs-12 group-left-list-sp">
+												<jsp:include page="${userViewRootPath}block_danhsach_sp_cungloai.jsp" />
 										</div>
 									</div>
 							 	</section>
 							</div>
-							<!-- kt left: phần chi tiết sách -->
+							<!-- kt left: phần chi tiết danh sách sách -->
+							
 							<!-- right: phần hoTroKH_sachNoiBat -->
 							<div class="col-md-4 col-sm-4 col-xs-12 padding-0">
 								<article class="row  margin-0 right">
@@ -153,8 +98,5 @@
 		<jsp:include page="${userViewBlockPath}footer.jsp" />
 		<!-- kt footer  -->
 	</div>
-
-
-	
 </body>
 </html>

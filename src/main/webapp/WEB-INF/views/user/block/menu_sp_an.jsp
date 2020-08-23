@@ -18,7 +18,7 @@
 	</div>
 	<ul class="main_menu_sp collapse navbar-collapse an_menu" id="nbMenuSP">
 		<%
-		if(request.getAttribute("menuLoaiSach") != null ){
+			if(request.getAttribute("menuLoaiSach") != null ){
 			List<LoaiSach> loaiSachs = (List<LoaiSach>)request.getAttribute("menuLoaiSach");
 			for(int i = 0; loaiSachs != null && i < loaiSachs.size(); i++){
 				String maLoaiSach = loaiSachs.get(i).getMaLoaiSach();
@@ -27,7 +27,7 @@
 			<li>
 				<span class="glyphicon glyphicon-ok" style="font-size:10px">&nbsp;</span>
 				<span>
-					<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=<%=maLoaiSach %>" class="text-a">
+					<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_SACH_THEO_LOAISACH %>?MaLS=<%=maLoaiSach%>" class="text-a">
 						<%=tenLoaiSach %> 
 					</a>
 				</span>
