@@ -29,4 +29,6 @@ public interface SachRepository extends JpaRepository<Sach, String> {
 	List<Sach> dsSachTheoMaLoaiSach(String maSach, int soLuong);
 	
 	List<Sach> findSachByMaLoaiSach(String maLoaiSach);
+	
+	Sach findSachByMaSach(String maSach);
 }

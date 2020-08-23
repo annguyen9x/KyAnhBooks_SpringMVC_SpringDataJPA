@@ -23,7 +23,9 @@ Mục tiêu của đề tài là “Xây dựng website bán sách cho hiệu s�
 
 # Chức năng của các tác nhân
 
-#Note: Version 1.0 (1. Khách hàng), Version 1.1 (2. Người quản trị, 3. Nhân viên kho, 4. Nhân viên giao hàng)
+## Note: 
+#Version 1.0: 1. Khách hàng
+#Version 1.1: 2. Người quản trị, 3. Nhân viên kho, 4. Nhân viên giao hàng; thêm 2 table: MenuDanhMuc[phân quyền đối tượng sử dụng các menu], CauHinh[cấu hình các tham số như:sđt, email, ..của shop]
 
 ## 1. Khách hàng ##
 - Đăng ký thành viên<br/>

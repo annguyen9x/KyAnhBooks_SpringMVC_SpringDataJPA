@@ -31,17 +31,22 @@
 <!-- start my js -->
 	<script src="${kyanhbooksRootPath}${userStaticRootPath}js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
 <!-- end my js -->
-
+<!-- begin: paging -->
+<script src="${kyanhbooksRootPath}${userStaticRootPath}paging/jquery.twbsPagination.js" type="text/javascript"></script>
+<!-- end: paging -->
 </head>
 
+<c:url var="ur" value="" />
 <%
 	LoaiSachService loaiSachService = null;
 	LoaiSach loaiSach = null;
 	String maLoaiSach = "";
+	String tenLoaiSach = "";
 	List<Sach> sachTheoLoaiSach = null;
-	if( request.getAttribute("MaLoaiSach") != null ){
-		maLoaiSach = request.getAttribute("MaLoaiSach").toString();
-		/* loaiSach  = loaiSachService.getLoaiSach(maLoaiSach); */
+	if( request.getAttribute("LoaiSach") != null ){
+		loaiSach = (LoaiSach)request.getAttribute("LoaiSach");
+		maLoaiSach = loaiSach.getMaLoaiSach();
+		tenLoaiSach = loaiSach.getTenLoaiSach();
 	}
 	if(request.getAttribute("SachTheoLoaiSach") != null ){
 		sachTheoLoaiSach = (List<Sach>)request.getAttribute("SachTheoLoaiSach");
@@ -62,7 +67,7 @@
 					<div class="col-md-12 col-sm-12 col-xs-12 padding-0 top_nd_trang">
 						<div class="top">
 							<h2>
-								<a href="#" class="text-a"><%= (loaiSach != null ) ? loaiSach.getTenLoaiSach() : "" %></a>
+								<a href="#" class="text-a"><%=tenLoaiSach%></a>
 							</h2>
 						</div>
 					</div>
@@ -76,44 +81,46 @@
 									<div class="row">
 										<div class="col-md-12 col-sm-12 col-xs-12 group-left-list-sp">
 											<%
-											if(sachTheoLoaiSach != null && sachTheoLoaiSach.size()> 0 ){
-												for(int i = 0; i < sachTheoLoaiSach.size(); i++)
-												{	
-													Sach sach = sachTheoLoaiSach.get(i);
-													String maSach = sach.getMaSach();
-													String tenSach = sach.getTenSach();
-													String donGia = DinhDang.MyNumberFormat(sach.getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-													String urlHinh = sach.getUrlHinh();
-											 %>
+												if(sachTheoLoaiSach != null && sachTheoLoaiSach.size()> 0 ){
+																														for(int i = 0; i < sachTheoLoaiSach.size(); i++)
+																														{	
+																															Sach sach = sachTheoLoaiSach.get(i);
+																															String maSach = sach.getMaSach();
+																															String tenSach = sach.getTenSach();
+																															String donGia = DinhDang.MyNumberFormat(sach.getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+																															String urlHinh = sach.getUrlHinh();
+											%>
 												<!-- sản phẩm  -->
 												<div class="col-md-3 col-sm-4 col-xs-12 padding-0 grid_group_sp">
 														<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 															<div class="group_sp my_border">
 																<div class="anh_sp">
-																	<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="">
+																	<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="">
 																		<img class="anh" src="${kyanhbooksRootPath}${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 																		<%
+																			
 																		%>
-																			<a href="/SachKyAnh/ThemSachVaoGioHang?MaSach=<%=maSach%>&SoLuong=1&DuongDan=<%= request.getServletPath() %>" class="them_gh text-a" >
+																			<a href="${kyanhbooksRootPathMenuLoaiSach}ThemSachVaoGioHang?MaSach=<%=maSach%>&SoLuong=1&DuongDan=<%= request.getServletPath() %>" class="them_gh text-a" >
 																				<span class="glyphicon glyphicon-shopping-cart"></span>
 																				<span class="text"> Thêm vào giỏ</span>
 																			</a>
 																		<%
+																			
 																		%>
 																	</a>
 																</div>
 																<div class="tensp_giasp">
 																	<h3 class="tensp">
-																		<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="text-a">
-																			<%=tenSach %>
+																		<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="text-a">
+																			<%=tenSach%>
 																		</a>
 																	</h3>	
 																	<div class="giasp">
 																		<span class="gia_goc">
-																			<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+																			<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 																		</span>
-																		<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach %>" class="chi_tiet">
-																			Chi Tiết
+																		<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach %>" class="chi_tiet">
+																			<%=Constant.TenNut.CHI_TIET%>
 																		</a>
 																	</div>
 																</div>
@@ -131,6 +138,7 @@
 											%>
 										</div>
 									</div>
+									
 							 	</section>
 							</div>
 							<!-- kt left: phần chi tiết sách -->
@@ -144,6 +152,12 @@
 						</div>
 					</div>
 					<!-- kt phần nội dung trang -->
+					<!-- begin: paging - phân trang -->
+					<c:url var="urlSachCungLoai" value="<KhongcanRootPath vi tu co>/SachCungLoai..." />
+					<nav aria-label="Page navigation">
+				        <ul class="pagination" id="pagination"></ul>
+				    </nav>
+					<!-- end: paging - phân trang -->
 				</div>
 			</div>
 		</section>
@@ -154,7 +168,24 @@
 		<!-- kt footer  -->
 	</div>
 
-
+	<script type="text/javascript">
+		var totalPages = ${model.totalPage};
+		var currentPage = ${model.page};
+		$(function () {
+	        window.pagObj = $('#pagination').twbsPagination({
+	            totalPages: totalPages,
+	            visiblePages: 10,
+	            startPage: currentPage,
+	            onPageClick: function (event, page) {
+	            	if (currentPage != page) {
+	            		$('#limit').val(2);
+						$('#page').val(page);
+						$('#formSubmit').submit();
+					}
+	            }
+	        });
+	    });
+	</script>
 	
 </body>
 </html>

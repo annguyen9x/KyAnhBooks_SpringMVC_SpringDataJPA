@@ -49,7 +49,7 @@
 	                            <input type="text" name="timKiem" id="timKiem" class="form-control" size="70" placeholder="Nhập từ khóa tìm kiếm..." />
 		                        <div class="input-group-btn">
 		                        	<button type="submit" class="btn mau_btn">
-		                        		Tìm kiếm
+		                        		<%=Constant.TenNut.TIM_KIEM%>
 		                        	</button>	
 		                        </div> 
 	                        </div>
@@ -60,7 +60,7 @@
 					<div class="cart" id="cart-block">
 	                    <a title="Giỏ hàng" href="gio_hang.jsp">
 	                    	<img src="${userStaticRootPath}img/icon/cart.png" alt="">
-	                    	<span class="text-show">Giỏ hàng</span>
+	                    	<span class="text-show"><%=Constant.TenNut.GIO_HANG%></span>
 	                    	<span class="soluong_sp">0</span>
 	                    </a>
 	                </div>
@@ -83,19 +83,19 @@
 						<div class="collapse navbar-collapse sua_collapse" id="navbarMnN"> 
 							<ul class="nav navbar-nav sua_ul">
 								<li>
-									<a href="./" class="a_menu_ngang" id="trangChu"><%=Constant.MenuNgang.TRANG_CHU %></a>
+									<a href="./" class="a_menu_ngang" id="trangChu"><%=Constant.MenuNgang.TRANG_CHU%></a>
 								</li>
 								<li>
-									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="a_menu_ngang" id="gioiThieu"><%=Constant.MenuNgang.GIOI_THIEU %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.GIOI_THIEU_NUMBER %>" class="a_menu_ngang" id="gioiThieu"><%=Constant.MenuNgang.GIOI_THIEU%></a>
 								</li>
 								<li>
-									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="a_menu_ngang" id="dichVu"><%=Constant.MenuNgang.DICH_VU %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.DICH_VU_NUMBER %>" class="a_menu_ngang" id="dichVu"><%=Constant.MenuNgang.DICH_VU%></a>
 								</li>
 								<li>
-									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="a_menu_ngang" id="huongDanMuaHang"><%=Constant.MenuNgang.HUONG_DAN_MUA_HANG %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.HUONG_DAN_MUA_HANG_NUMBER %>" class="a_menu_ngang" id="huongDanMuaHang"><%=Constant.MenuNgang.HUONG_DAN_MUA_HANG%></a>
 								</li>
 								<li>
-									<a href="${kyanhbooksRootPathMenuLoaiSach}menuNgang/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="a_menu_ngang" id="lienHe"><%=Constant.MenuNgang.LIEN_HE %></a>
+									<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_MENU_NGANG %>/<%=Constant.MenuNgang.LIEN_HE_NUMBER %>" class="a_menu_ngang" id="lienHe"><%=Constant.MenuNgang.LIEN_HE%></a>
 								</li>
 							</ul>
 						</div>

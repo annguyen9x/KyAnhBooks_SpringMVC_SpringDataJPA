@@ -23,11 +23,7 @@ public interface SachService {
 	
 	List<Sach> dsSachTheoLoaiSach(String maLoaiSach);
 	
-	List<Sach> dsTenSachTheoLoaiSach(String maLoaiSach);
-	
 	List<Sach> dsSachTheoTenSach(String tenSach);
-	
-	Map<Integer, List<Sach>> hienThiSachTheoLoaiSach(String maLoaiSach);
 	
 	List<Sach> timKiemSach(String tenSach);
 }

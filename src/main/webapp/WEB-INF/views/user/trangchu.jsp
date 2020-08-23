@@ -50,7 +50,7 @@
 									<div class="top_sp_cungloai">
 										<h2>
 											<span class="text">
-												<%=Constant.TrangChu.SACH_NOI_BAT %>
+												<%=Constant.TrangChu.SACH_NOI_BAT%>
 											</a> 
 										</h2>
 									</div>
@@ -60,17 +60,17 @@
 									<div class="col-md-12 col-sm-6 col-xs-12 padding-0 grid_group_sp">
 										<%
 											List<Sach> sachNoiBat = (List<Sach>)request.getAttribute("SachNoiBat");
-											for(int i= 0; null != sachNoiBat && i < sachNoiBat.size(); i++ ){
-												String tenSach = sachNoiBat.get(i).getTenSach();
-												String donGia = DinhDang.MyNumberFormat(sachNoiBat.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-												String urlHinh = sachNoiBat.get(i).getUrlHinh();
-												String maSach = sachNoiBat.get(i).getMaSach();
+																											for(int i= 0; null != sachNoiBat && i < sachNoiBat.size(); i++ ){
+																												String tenSach = sachNoiBat.get(i).getTenSach();
+																												String donGia = DinhDang.MyNumberFormat(sachNoiBat.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+																												String urlHinh = sachNoiBat.get(i).getUrlHinh();
+																												String maSach = sachNoiBat.get(i).getMaSach();
 										%>
 											<!-- sản phẩm  -->
 											<div class="col-md-12 col-sm-6 col-xs-12 padding-0" style="margin-bottom: 10px;">
 												<div class="group_sp my_border">
 													<div class="anh_sp">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -80,16 +80,16 @@
 													</div>
 													<div class="tensp_giasp">
 														<h3 class="tensp">
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 																<%=tenSach%>
 															</a>
 														</h3>	
 														<div class="giasp">
 															<span class="gia_goc">
-																<%=donGia %> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 															</span>
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-																Chi Tiết
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+																<%=Constant.TenNut.CHI_TIET%>
 															</a>
 														</div>
 													</div>
@@ -111,34 +111,34 @@
 									<div class="top_sp_cungloai">
 										<h2>
 											<span class="text">
-												<%=Constant.TrangChu.SACH_MOI %>
+												<%=Constant.TrangChu.SACH_MOI%>
 											</a> 
 										</h2>
 									</div>
 								</div>
 
 								<%
-								List<Sach> sachMois = (List<Sach>)request.getAttribute("SachMoi");
-								if(sachMois != null ){
-									String maSach = "";
-									String tenSach = "";
-									String donGia = "";
-									String urlHinh = "";
+									List<Sach> sachMois = (List<Sach>)request.getAttribute("SachMoi");
+																				if(sachMois != null ){
+																					String maSach = "";
+																					String tenSach = "";
+																					String donGia = "";
+																					String urlHinh = "";
 								%>
 								<div class="col-md-12 col-sm-12 col-xs-12 group-right-list-sp">
 									<%
-									for(int i = 0; i < (Constant.TrangChu.SACH_MOI_NUMBER/2); i++){
-										maSach = sachMois.get(i).getMaSach();
-										tenSach = sachMois.get(i).getTenSach();
-										urlHinh = sachMois.get(i).getUrlHinh();
-										donGia = DinhDang.MyNumberFormat(sachMois.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+										for(int i = 0; i < (Constant.TrangChu.SACH_MOI_NUMBER/2); i++){
+																								maSach = sachMois.get(i).getMaSach();
+																								tenSach = sachMois.get(i).getTenSach();
+																								urlHinh = sachMois.get(i).getUrlHinh();
+																								donGia = DinhDang.MyNumberFormat(sachMois.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
 									%>
 									<!-- sản phẩm  -->
 									<div class="col-md-3 col-sm-3 col-xs-12 padding-0 grid_group_sp">
 											<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 												<div class="group_sp my_border">
 													<div class="anh_sp">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="#" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -148,16 +148,16 @@
 													</div>
 													<div class="tensp_giasp">
 													<h3 class="tensp">
-														<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 															<%=tenSach%>
 														</a>
 													</h3>	
 													<div class="giasp">
 														<span class="gia_goc">
-															<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+															<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 														</span>
-														<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-															Chi Tiết
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+															<%=Constant.TenNut.CHI_TIET%>
 														</a>
 													</div>
 												</div>
@@ -166,24 +166,24 @@
 									</div>
 									<!-- kt sản phẩm  -->
 									<%
-									}
+										}
 									%>
 								</div>
 								
 								<div class="col-md-12 col-sm-12 col-xs-12 group-right-list-sp">
 									<%
-									for(int i = (Constant.TrangChu.SACH_MOI_NUMBER/2); i < Constant.TrangChu.SACH_MOI_NUMBER; i++){
-										maSach = sachMois.get(i).getMaSach();
-										tenSach = sachMois.get(i).getTenSach();
-										urlHinh = sachMois.get(i).getUrlHinh();
-										donGia = DinhDang.MyNumberFormat(sachMois.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+										for(int i = (Constant.TrangChu.SACH_MOI_NUMBER/2); i < Constant.TrangChu.SACH_MOI_NUMBER; i++){
+																								maSach = sachMois.get(i).getMaSach();
+																								tenSach = sachMois.get(i).getTenSach();
+																								urlHinh = sachMois.get(i).getUrlHinh();
+																								donGia = DinhDang.MyNumberFormat(sachMois.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
 									%>
 									<!-- sản phẩm  -->
 									<div class="col-md-3 col-sm-3 col-xs-12 padding-0 grid_group_sp">
 											<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 												<div class="group_sp my_border">
 													<div class="anh_sp">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="#" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -193,16 +193,16 @@
 													</div>
 													<div class="tensp_giasp">
 													<h3 class="tensp">
-														<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 															<%=tenSach%>
 														</a>
 													</h3>	
 													<div class="giasp">
 														<span class="gia_goc">
-															<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+															<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 														</span>
-														<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-															Chi Tiết
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+															<%=Constant.TenNut.CHI_TIET%>
 														</a>
 													</div>
 												</div>
@@ -211,11 +211,11 @@
 									</div>
 									<!-- kt sản phẩm  -->
 									<%
-									}
+										}
 									%>
 								</div>
 								<%
-								}
+									}
 								%>
 							</div>
 						</div>
@@ -248,8 +248,8 @@
 							<div class="col-md-12 col-sm-12 col-xs-12 padding-0 top-list-sp">
 								<div class="top_sp_cungloai">
 									<h2>
-										<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="text-a">
-											<%=Constant.TrangChu.SACH_VAN_HOC %>
+										<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_SACH_THEO_LOAISACH %>?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="text-a">
+											<%=Constant.TrangChu.SACH_VAN_HOC%>
 										</a> 
 									</h2>
 								</div>
@@ -258,16 +258,16 @@
 							<div class="col-md-12 col-sm-12 col-xs-12 padding-0 group-list-sp">
 								<!-- phần 1: banner svh, sp -->
 									<%
-									List<Sach> sachVanHocs = (List<Sach>)request.getAttribute("sachVanHocTrangChu");
-									String tenSach = "";
-									String donGia = "";
-									String urlHinh = "";
-									String maSach = "";
+										List<Sach> sachVanHocs = (List<Sach>)request.getAttribute("sachVanHocTrangChu");
+																							String tenSach = "";
+																							String donGia = "";
+																							String urlHinh = "";
+																							String maSach = "";
 									%>
 									<div class="col-md-6 col-sm-12 col-xs-12 padding-0">
 										<!-- phần banner sách văn học -->
 										<div class="col-md-6 col-sm-6 col-xs-12 padding-0 banner_bottom">
-											<a href="${kyanhbooksRootPathMenuLoaiSach}sachTheoLoaiSach?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="hinh_svh">
+											<a href="${kyanhbooksRootPathMenuLoaiSach}<%=Constant.Path.USER_CONTROLLER_SACH_THEO_LOAISACH %>?MaLS=<%=Constant.TrangChu.MA_LOAI_SACH_VAN_HOC%>" class="hinh_svh">
 												<img class="hinh" src="${userStaticRootPath}img/banner/banner_svh.jpg">
 											</a>
 										</div>
@@ -275,17 +275,17 @@
 										<!-- phần sản phẩm  -->
 										<div class="col-md-6 col-sm-6 col-xs-12 padding-0 grid_group_sp">
 											<%
-											for(int i= 0; i < 2; i++){
-												tenSach = sachVanHocs.get(i).getTenSach();
-												donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-												urlHinh = sachVanHocs.get(i).getUrlHinh();
-												maSach = sachVanHocs.get(i).getMaSach();
+												for(int i= 0; i < 2; i++){
+																														tenSach = sachVanHocs.get(i).getTenSach();
+																														donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+																														urlHinh = sachVanHocs.get(i).getUrlHinh();
+																														maSach = sachVanHocs.get(i).getMaSach();
 											%>
 											<!-- sản phẩm 1 -->
 											<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 												<div class="group_sp">
 													<div class="anh_sp my_border">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="#" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -295,16 +295,16 @@
 													</div>
 													<div class="tensp_giasp">
 														<h3 class="tensp">
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 																<%=tenSach%>
 															</a>
 														</h3>	
 														<div class="giasp">
 															<span class="gia_goc">
-																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 															</span>
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-																Chi Tiết
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+																<%=Constant.TenNut.CHI_TIET%>
 															</a>
 														</div>
 													</div>
@@ -312,7 +312,7 @@
 											</div>
 											<!-- kt sản phẩm 1 -->
 											<%
-											}
+												}
 											%>
 										</div>
 										<!-- kt phần sản phẩm  -->
@@ -323,17 +323,17 @@
 										<!-- phần sản phẩm  -->
 										<div class="col-md-6 col-sm-6 col-xs-12 padding-0 grid_group_sp">
 											<%
-											for(int i= 2; i < 4; i++){
-												tenSach = sachVanHocs.get(i).getTenSach();
-												donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-												urlHinh = sachVanHocs.get(i).getUrlHinh();
-												maSach = sachVanHocs.get(i).getMaSach();
+												for(int i= 2; i < 4; i++){
+																														tenSach = sachVanHocs.get(i).getTenSach();
+																														donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+																														urlHinh = sachVanHocs.get(i).getUrlHinh();
+																														maSach = sachVanHocs.get(i).getMaSach();
 											%>
 											<!-- sản phẩm 1 -->
 											<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 												<div class="group_sp ">
 													<div class="anh_sp my_border">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="#" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -343,16 +343,16 @@
 													</div>
 													<div class="tensp_giasp">
 														<h3 class="tensp">
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 																<%=tenSach%>
 															</a>
 														</h3>	
 														<div class="giasp">
 															<span class="gia_goc">
-																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 															</span>
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-																Chi Tiết
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+																<%=Constant.TenNut.CHI_TIET%>
 															</a>
 														</div>
 													</div>
@@ -360,24 +360,24 @@
 											</div>
 											<!-- kt sản phẩm 1 -->
 											<%
-											}
+												}
 											%>
 										</div>
 										<!-- kt phần sản phẩm  -->
 										<!-- phần sản phẩm  -->
 										<div class="col-md-6 col-sm-6 col-xs-12 padding-0 grid_group_sp">
 											<%
-											for(int i= 4; i < 6; i++){
-												tenSach = sachVanHocs.get(i).getTenSach();
-												donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
-												urlHinh = sachVanHocs.get(i).getUrlHinh();
-												maSach = sachVanHocs.get(i).getMaSach();
+												for(int i= 4; i < 6; i++){
+																														tenSach = sachVanHocs.get(i).getTenSach();
+																														donGia = DinhDang.MyNumberFormat(sachVanHocs.get(i).getDonGia(), Constant.TienTe.TIEN_COMMA_PATTERN);
+																														urlHinh = sachVanHocs.get(i).getUrlHinh();
+																														maSach = sachVanHocs.get(i).getMaSach();
 											%>
 											<!-- sản phẩm 1 -->
 											<div class="col-md-12 col-sm-12 col-xs-12 padding-0">
 												<div class="group_sp ">
 													<div class="anh_sp my_border">
-														<a href="chitiet_sp.jsp" class="">
+														<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="">
 															<img class="anh" src="${userStaticRootPath}img/sanpham/<%=urlHinh %>" title="sp" alt="anhsp">
 															<a href="#" class="them_gh text-a" >
 																<span class="glyphicon glyphicon-shopping-cart"></span>
@@ -387,16 +387,16 @@
 													</div>
 													<div class="tensp_giasp">
 														<h3 class="tensp">
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="text-a">
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="text-a">
 																<%=tenSach%>
 															</a>
 														</h3>	
 														<div class="giasp">
 															<span class="gia_goc">
-																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN %>
+																<%=donGia%> <%=Constant.TienTe.DON_VI_TIEN_TE_VN%>
 															</span>
-															<a href="/SachKyAnh/ChiTietSach?MaSach=<%=maSach%>" class="chi_tiet">
-																Chi Tiết
+															<a href="${kyanhbooksRootPathMenuLoaiSach}ChiTietSP?MaSach=<%=maSach%>" class="chi_tiet">
+																<%=Constant.TenNut.CHI_TIET%>
 															</a>
 														</div>
 													</div>
