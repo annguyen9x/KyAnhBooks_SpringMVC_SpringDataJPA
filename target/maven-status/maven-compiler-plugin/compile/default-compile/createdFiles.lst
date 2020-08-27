@@ -1,7 +1,8 @@
 com\annguyen\kyanhbooks\repository\KhachHangRepository.class
+com\annguyen\kyanhbooks\model\GioHang.class
 com\annguyen\kyanhbooks\config\JPAConfig.class
-com\annguyen\kyanhbooks\controller\user\DatHangController.class
 com\annguyen\kyanhbooks\service\impl\KhachHangServiceImpl.class
+com\annguyen\kyanhbooks\controller\user\GioHangController.class
 com\annguyen\kyanhbooks\service\impl\SachServiceImpl.class
 com\annguyen\kyanhbooks\iterceptor\MenuHandle.class
 com\annguyen\kyanhbooks\repository\SachRepository.class

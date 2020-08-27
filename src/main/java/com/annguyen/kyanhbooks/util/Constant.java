@@ -1,7 +1,5 @@
 package com.annguyen.kyanhbooks.util;
 
-import org.springframework.stereotype.Controller;
-
 public class Constant {
 	
 	//Các URL
@@ -18,25 +16,33 @@ public class Constant {
 		public static final String KYANHBOOKS_ROOT_PATH_MENU_LOAISACH = KYANHBOOKS_ROOT_PATH + "MenuLoaiSach/";
 		
 		//View User
-		public static String USER_VIEW_ROOT_PATH = "/WEB-INF/views/user/";
-		public static String USER_VIEW_BLOCK_PATH = USER_VIEW_ROOT_PATH + "block/";
+		public static final String USER_VIEW_ROOT_PATH = "/WEB-INF/views/user/";
+		public static final String USER_VIEW_BLOCK_PATH = USER_VIEW_ROOT_PATH + "block/";
 		
-		public static String USER_CONTROLLER_SACH_THEO_LOAISACH = "sachTheoLoaiSach";
-		public static String USER_CONTROLLER_PHAN_TRANG_SACH_THEO_LOAISACH = "phanTrangSachTheoLoaiSach";
-		public static String USER_CONTROLLER_MENU_NGANG = "menuNgang";
-		public static String USER_CONTROLLER_CHI_TIET_SP = "ChiTietSP";
+		//Controller User
+		public static final String USER_CONTROLLER_SACH_THEO_LOAISACH = "sachTheoLoaiSach";
+		public static final String USER_CONTROLLER_PHAN_TRANG_SACH_THEO_LOAISACH = "phanTrangSachTheoLoaiSach";
+		public static final String USER_CONTROLLER_MENU_NGANG = "menuNgang";
+		public static final String USER_CONTROLLER_CHI_TIET_SP = "ChiTietSP";
+		public static final String USER_CONTROLLER_GIO_HANG_THEM_SP= "ThemSpVaoGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_XEM = "XemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_XOA = "XoaGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG__THONGTIN_DAT_HANG = "ThongTinDatHang";
+		public static final String USER_CONTROLLER_GIO_HANG_DAT_HANG = "DatHang";
+		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP = "HienThiDangNhap";
+		public static final String USER_CONTROLLER_KHACH_HANG_DANGNHAP = "DangNhap";
 		
 		
 		//================ ADMIN ================
 		//View Admin
-		public static String ADMIN_VIEW_ROOT_PATH = "/WEB-INF/views/admin/";
-		public static String ADMIN_VIEW_BLOCK_PATH = ADMIN_VIEW_ROOT_PATH + "block/";
+		public static final String ADMIN_VIEW_ROOT_PATH = "/WEB-INF/views/admin/";
+		public static final String ADMIN_VIEW_BLOCK_PATH = ADMIN_VIEW_ROOT_PATH + "block/";
 		
 		//CSS+JS User
-		public static String USER_STATIC_ROOT_PATH = "commonResources/user/static/";
+		public static final String USER_STATIC_ROOT_PATH = "commonResources/user/static/";
 		
 		//CSS+JS Admin
-		public static String ADMIN_STATIC_ROOT_PATH = "commonResources/admin/static/";
+		public static final String ADMIN_STATIC_ROOT_PATH = "commonResources/admin/static/";
 		
 	}
 	
@@ -82,32 +88,37 @@ public class Constant {
 	
 	//Menu ngang
 	public interface MenuNgang{
-		public static String TRANG_CHU = "Trang Chủ";
-		public static String GIOI_THIEU = "Giới thiệu";
-		public static String DICH_VU = "Dịch vụ";
-		public static String HUONG_DAN_MUA_HANG = "Hướng dẫn mua hàng";
-		public static String LIEN_HE = "Liên hệ";
+		public static final String TRANG_CHU = "Trang Chủ";
+		public static final String GIOI_THIEU = "Giới thiệu";
+		public static final String DICH_VU = "Dịch vụ";
+		public static final String HUONG_DAN_MUA_HANG = "Hướng dẫn mua hàng";
+		public static final String LIEN_HE = "Liên hệ";
 		
-		public static int TRANG_CHU_NUMBER = 0;
-		public static int GIOI_THIEU_NUMBER = 1;
-		public static int DICH_VU_NUMBER = 2;
-		public static int HUONG_DAN_MUA_HANG_NUMBER = 3;
-		public static int LIEN_HE_NUMBER = 4;
+		public static final int TRANG_CHU_NUMBER = 0;
+		public static final int GIOI_THIEU_NUMBER = 1;
+		public static final int DICH_VU_NUMBER = 2;
+		public static final int HUONG_DAN_MUA_HANG_NUMBER = 3;
+		public static final int LIEN_HE_NUMBER = 4;
+	}
+	
+	//GioHang
+	public interface GioHang{
+		public static final String JSESSIONID = "JSESSIONID";
 	}
 	
 	//Định dạng tiền
 	public interface TienTe{
-		public static String TIEN_COMMA_PATTERN = "###,###,###";
-		public static String DON_VI_TIEN_TE_VN = "đ";
+		public static final String TIEN_COMMA_PATTERN = "###,###,###";
+		public static final String DON_VI_TIEN_TE_VN = "đ";
 	}
 	
 	//Tên các nút - button
 	public interface TenNut{
-		public static String THOAT = "Thoát";
-		public static String THEM_VAO_GIO_HANG = "Thêm vào giỏ hàng";
-		public static String CHI_TIET = "Chi Tiết";
-		public static String GIO_HANG = "Giỏ hàng";
-		public static String TIM_KIEM = "Tìm kiếm";
+		public static final String THOAT = "Thoát";
+		public static final String THEM_VAO_GIO_HANG = "Thêm vào giỏ hàng";
+		public static final String CHI_TIET = "Chi Tiết";
+		public static final String GIO_HANG = "Giỏ hàng";
+		public static final String TIM_KIEM = "Tìm kiếm";
 	}
 	
 	//Các thông báo
