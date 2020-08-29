@@ -30,16 +30,26 @@ public class Constant {
 		public static final String USER_CONTROLLER_GIO_HANG__THONGTIN_DAT_HANG = "ThongTinDatHang";
 		public static final String USER_CONTROLLER_GIO_HANG_DAT_HANG = "DatHang";
 		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP = "HienThiDangNhap";
+		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGKY = "HienThiDangKy";
 		public static final String USER_CONTROLLER_KHACH_HANG_DANGNHAP = "DangNhap";
+		public static final String USER_CONTROLLER_KHACH_HANG_DANGKY = "DangKy";
+		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_CAPNHAT_TAIKHOAN = "HienThiCapNhatTaiKhoan";
+		public static final String USER_CONTROLLER_KHACH_HANG_CAPNHAT_TAIKHOAN = "CapNhatTaiKhoan";
+		public static final String USER_CONTROLLER_KHACH_HANG_XEM_LICHSU_MUAHANG = "XemLichSuMuaHang";
+		public static final String USER_CONTROLLER_KHACH_HANG_DANG_XUAT = "DangXuat";
+		public static final String USER_CONTROLLER_KHACH_HANG_QUEN_MATKHAU = "QuenMatKhau";
+		public static final String USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL = "LayMaXnEmail";
+		public static final String USER_CONTROLLER_XAC_NHAN_EMALI = "XacNhanEmail";
+		public static final String USER_CONTROLLER_THEO_DOI_DON_HANG = "TheoDoiDonHang";
 		
+		
+		//CSS+JS User
+		public static final String USER_STATIC_ROOT_PATH = "commonResources/user/static/";
 		
 		//================ ADMIN ================
 		//View Admin
 		public static final String ADMIN_VIEW_ROOT_PATH = "/WEB-INF/views/admin/";
 		public static final String ADMIN_VIEW_BLOCK_PATH = ADMIN_VIEW_ROOT_PATH + "block/";
-		
-		//CSS+JS User
-		public static final String USER_STATIC_ROOT_PATH = "commonResources/user/static/";
 		
 		//CSS+JS Admin
 		public static final String ADMIN_STATIC_ROOT_PATH = "commonResources/admin/static/";
@@ -48,14 +58,27 @@ public class Constant {
 	
 	//Dùng trong chức năng cấu hình của Admin
 	public interface CauHinh{
+		
+		//Thông tin shop
 		public static final String TEN_THAMSO_SO_DIENTHOAI_CA_NHAN = "SoDienThoai_CaNhan";
 		public static final String TEN_THAMSO_SO_DIENTHOAI_SHOP = "SoDienThoai_SHOP";
 		public static final String TEN_THAMSO_EMAIL_CA_NHAN = "Email_CaNhan";
 		public static final String TEN_THAMSO_EMAIL_SHOP = "Email_Shop";
+		public static final String TEN_THAMSO_MATKHAU_EMAIL_SHOP = "Email_Shop";
 		public static final String TEN_THAMSO_LINK_FB_CA_NHAN = "LinkFB_CaNhan";
 		public static final String TEN_THAMSO_LINK_FB_SHOP = "LinkFB_Shop";
 		public static final String TEN_THAMSO_DIA_CHI_SHOP_1 = "DiaChi_Shop1";
 		public static final String TEN_THAMSO_DIA_CHI_SHOP_2 = "DiaChi_Shop2";
+		
+		//Email gửi thông tin từ shop
+		public static final String TEN_THAMSO_EMAIL_XN_DANGKY_TIEU_DE = "XnEmailDangKy_TieuDe";
+		public static final String TEN_THAMSO_EMAIL_XN_DANGKY_NOI_DUNG = "XnEmailDangKy_NoiDung";
+		public static final String TEN_THAMSO_EMAIL_XN_QUEN_MATKHAU_TIEU_DE = "XnEmailQuenMK_TieuDe";
+		public static final String TEN_THAMSO_EMAIL_XN_QUEN_MATKHAU_NOI_DUNG = "XnEmailQuenMK_NoiDung";
+		public static final String TEN_THAMSO_EMAIL_GUI_HOADON_TIEU_DE = "XnEmailGuiHoaDon_TieuDe";
+		public static final String TEN_THAMSO_EMAIL_GUI_HOADON_NOI_DUNG = "XnEmailGuiHoaDon_NoiDung";
+		
+		//Phân trang
 		public static final String TEN_THAMSO_LIMIT_SP_THEO_LOAISP = "SoSP_Theo_LoaiSP_Tren_Mot_Trang";
 		public static final String TEN_THAMSO_SOTRANG_SP_NHIN_THAY_THEO_LOAISP = "SoTrangSP_NhinThay_Theo_LoaiSP";
 		public static final String TEN_THAMSO_PAGE_FIRST_DEFAULT = "TrangSP_MacDinh_DauTien";
@@ -65,13 +88,25 @@ public class Constant {
 		public static final String GIA_TRI_SO_DIENTHOAI_SHOP = "(84)92.910.9072";
 		public static final String GIA_TRI_EMAIL_CA_NHAN = "annguyen.itworks@gmail.com";
 		public static final String GIA_TRI_EMAIL_SHOP = "kyanhbooks@gmail.com";
+		public static final String GIA_TRI_MATKHAU_EMAIL_SHOP = "Kab@1234";
 //		public static final String GIA_TRI_LINK_FB_CA_NHAN = "";//Get Trực tiếp từ Cấu hình ở DB chứ không cần so sánh
 //		public static final String GIA_TRI_LINK_FB_SHOP = "";
 		public static final String GIA_TRI_DIA_CHI_SHOP_1 = "Phường Sông Trí, Tx. Kỳ anh, T. Hà Tĩnh";
 //		public static final String GIA_TRI_DIA_CHI_SHOP_2 = "DiaChi_Shop2";
+		
+		//Email gửi thông tin từ shop
+		public static final String GIA_TRI_EMAIL_XN_DANGKY_TIEU_DE = "XnEmailDangKy_TieuDe";
+		public static final String GIA_TRI_EMAIL_XN_DANGKY_NOI_DUNG = "XnEmailDangKy_NoiDung";
+		public static final String GIA_TRI_EMAIL_XN_QUEN_MATKHAU_TIEU_DE = "Xác nhận đăng nhập tài khoản tại [kyanhbooks.com] khi quên mật khẩu";
+		public static final String GIA_TRI_EMAIL_XN_QUEN_MATKHAU_NOI_DUNG = "Mã xác nhận email đăng nhập: ";
+		public static final String GIA_TRI_EMAIL_GUI_HOADON_TIEU_DE = "XnEmailGuiHoaDon_TieuDe";
+		public static final String GIA_TRI_EMAIL_GUI_HOADON_NOI_DUNG = "XnEmailGuiHoaDon_NoiDung";
+		
+		//Phân trang
 		public static final int GIA_TRI_LIMIT_SP_THEO_LOAISP = 2; 
 		public static final int GIA_TRI_SOTRANG_SP_NHIN_THAY_THEO_LOAISP = 6; 
 		public static final int GIA_TRI_PAGE_FIRST_DEFAULT = 1; 
+		
 	}
 	
 	//Trang chủ
@@ -124,6 +159,16 @@ public class Constant {
 	//Các thông báo
 	public interface ThongBao{
 		public static final String KHONG_CO_SP_TRONG_LOAISACH = "Không có sản phẩm nào trong loại sách này !";
+	}
+	
+	public interface Form{
+		public static final String REG_MAIL = "/^[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*@[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*(\\.[A-Za-z]+)+$/";
+	}
+	
+	public interface Email{
+		public static final int LOAI_CONG_VIEC_GUI_EMAIL_QMK = 1;//Quên mật khẩu
+		public static final int LOAI_CONG_VIEC_GUI_EMAIL_XNDK = 2;//Xác nhận đăng ký
+		public static final int LOAI_CONG_VIEC_GUI_EMAIL_TTDH = 3;//Thông tin đơn hàng
 	}
 	
 }

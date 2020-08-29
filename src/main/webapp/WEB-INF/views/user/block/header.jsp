@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/views/user/init.jsp" %>
+<%@page import="com.annguyen.kyanhbooks.model.KhachHang"%>
 
 <%
 	int menuNgangId = Constant.MenuNgang.TRANG_CHU_NUMBER;
@@ -22,10 +23,21 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="myNavbar">
 			      <ul class="nav navbar-nav navbar-right">
-			        <li><a href="theodoi_donhang.jsp"><span class="glyphicon glyphicon-edit"></span> Theo dõi đơn hàng</a></li>
-			        <li><a href="dangnhap.jsp"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
-			        <li><a href="capnhat_taikhoan.jsp"><span class="glyphicon glyphicon-user"></span> Nguyen Van An</a></li>
-			        <li><a href="dangky.jsp"><span class="glyphicon glyphicon-lock"></span> Đăng ký</a></li>
+			        <li><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_THEO_DOI_DON_HANG%>"><span class="glyphicon glyphicon-edit"></span> Theo dõi đơn hàng</a></li>
+			        <%
+			        KhachHang khachHang = (KhachHang)session.getAttribute("KhachHang");
+			        if( khachHang == null ){
+			        %>
+			        	<li><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP%>"><span class="glyphicon glyphicon-log-in"></span> Đăng nhập</a></li>
+			        	<li><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGKY%>"><span class="glyphicon glyphicon-lock"></span> Đăng ký</a></li>
+			        <%
+			        }
+			        else if( khachHang != null ){
+			        %>
+			        	<li><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_CAPNHAT_TAIKHOAN%>"><span class="glyphicon glyphicon-user"></span> <%=khachHang.getTenKH() %></a></li>
+			        <%
+			        }
+			        %>
 			      </ul>
 			    </div>
 			  </div>

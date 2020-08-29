@@ -2,10 +2,12 @@ package com.annguyen.kyanhbooks.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.annguyen.kyanhbooks.model.GioHang;
 import com.annguyen.kyanhbooks.repository.GioHangRepository;
 import com.annguyen.kyanhbooks.service.GioHangService;
+import com.annguyen.kyanhbooks.util.Constant;
 
 @Service
 public class GioHangServiceImpl implements GioHangService{
@@ -65,5 +67,10 @@ public class GioHangServiceImpl implements GioHangService{
 //	public String hello(@CookieValue("foo") String fooCookie) {
 //	    // ...
 //	}
-
+	
+	@RequestMapping(value = "/" + Constant.Path.USER_CONTROLLER_THEO_DOI_DON_HANG )
+	public String theoDoiDonHang() {
+		
+		return "theodoi_donhang";
+	}
 }

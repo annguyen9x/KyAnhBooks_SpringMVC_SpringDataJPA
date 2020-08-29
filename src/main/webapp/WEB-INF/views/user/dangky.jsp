@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ include file="/WEB-INF/views/user/init.jsp"%>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
 
@@ -11,22 +12,22 @@
 <title>Đăng ký tài khoản thành viên</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--  start bootstrap -->
-<link rel="stylesheet" type="text/css" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
-<script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+<script type="text/javascript" src="${userStaticRootPath}js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="${userStaticRootPath}bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
 <!--  end bootstrap -->
 <!-- start fontawesome -->
-<link rel="stylesheet" href="../static/font/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${userStaticRootPath}font/font-awesome-4.7.0/css/font-awesome.min.css">
 <!-- start fontawesome -->
 <!-- start facebook -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=2525119214214430&autoLogAppEvents=1"></script>
 <!-- end facebook -->
 <!-- start my css -->
-<link rel="stylesheet" type="text/css" href="../static/css/trangchu.css"/>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}css/trangchu.css"/>
 <!-- end my css -->
 <!-- start my js -->
-	<script src="../static/js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../static/js/formValidation.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/formValidation.js" type="text/javascript" charset="utf-8"></script>
 <!-- end my js -->
 
 </head>
@@ -48,9 +49,9 @@
 						        </span>
 						    </h2>
 						    <ul>
-						        <li class="list-li"><a href="dangnhap.jsp" class="text-a"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
-						        <li class="list-li"><a href="dangky.jsp" class="text-a"><i class="fa fa-lock"></i> Đăng ký</a></li>
-						        <li class="list-li"><a href="lay_matkhau.jsp" class="text-a"><i class="fa fa-question"></i> Quên mật khẩu</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP%>" class="text-a"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGKY%>" class="text-a"><i class="fa fa-lock"></i> Đăng ký</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_QUEN_MATKHAU%>" class="text-a"><i class="fa fa-question"></i> Quên mật khẩu</a></li>
 						    </ul>
 						</div>
 					</div>
