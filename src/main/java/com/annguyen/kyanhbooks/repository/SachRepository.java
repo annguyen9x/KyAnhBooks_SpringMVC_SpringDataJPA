@@ -33,5 +33,5 @@ public interface SachRepository extends JpaRepository<Sach, String> {
 	
 	List<Sach> findSachByMaLoaiSach(String maLoaiSach, Pageable pageable);
 	
-	Sach findSachByMaSach(String maSach);
+	//Sach findSachByMaSach(String maSach);
 }

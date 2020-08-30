@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ include file="/WEB-INF/views/user/init.jsp" %>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="com.annguyen.kyanhbooks.model.KhachHang" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:url var="url" value="/view/user"></c:url>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,29 +15,35 @@
 <title>Xác nhận email đăng ký tài khoản thành viên</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--  start bootstrap -->
-<link rel="stylesheet" type="text/css" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
-<script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+<script type="text/javascript" src="${userStaticRootPath}js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="${userStaticRootPath}bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
 <!--  end bootstrap -->
 <!-- start fontawesome -->
-<link rel="stylesheet" href="../static/font/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${userStaticRootPath}font/font-awesome-4.7.0/css/font-awesome.min.css">
 <!-- start fontawesome -->
 <!-- start facebook -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=2525119214214430&autoLogAppEvents=1"></script>
 <!-- end facebook -->
 <!-- start my css -->
-<link rel="stylesheet" type="text/css" href="../static/css/trangchu.css"/>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}css/trangchu.css"/>
 <!-- end my css -->
 <!-- start my js -->
-	<script src="../static/js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../static/js/formValidation.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/formValidation.js" type="text/javascript" charset="utf-8"></script>
 <!-- end my js -->
 
 </head>
+<%
+	String loiGuiEmailXnTuServer = "";
+	if( session.getAttribute("LoiGuiEmailXnTuServer") != null){
+		loiGuiEmailXnTuServer = session.getAttribute("LoiGuiEmailXnTuServer").toString();
+	}
+%>
 <body>
 	<div class="wrapper">
 		<!-- phần header  -->
-		<jsp:include page="block/header.jsp" />
+		<jsp:include page="${userViewBlockPath}header.jsp" />
 		<!-- kt header  -->
 		
 		<!-- phần nội dung sản phẩm -->
@@ -48,9 +58,9 @@
 						        </span>
 						    </h2>
 						    <ul>
-						        <li class="list-li"><a href="dangnhap.jsp" class="text-a"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
-						        <li class="list-li"><a href="dangky.jsp" class="text-a"><i class="fa fa-lock"></i> Đăng ký</a></li>
-						        <li class="list-li"><a href="lay_matkhau.jsp" class="text-a"><i class="fa fa-question"></i> Quên mật khẩu</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP%>" class="text-a"><i class="fa fa-sign-in"></i> Đăng nhập</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGKY%>" class="text-a"><i class="fa fa-lock"></i> Đăng ký</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_QUEN_MATKHAU%>" class="text-a"><i class="fa fa-question"></i> Quên mật khẩu</a></li>
 						    </ul>
 						</div>
 					</div>
@@ -71,22 +81,63 @@
 			                    	<h2 class="col-xs-12 text-center">
 			                    		<span>Xác nhận email để hoàn tất đăng ký</span>
 			                    	</h2>
-			                    	<div class="col-md-3 col-sm-4 col-xs-10 col-md-offset-5 col-sm-offset-4 col-xs-offset-1">
-										<form method="post" action="./trangchu.jsp" id="formXacNhanDK" class="form-horizontal">
-											<div class="form-group">
-								            	<label for="email">Email:</label>
-							            		an@gmail.com	
-								            </div>
-								            <div class="form-group">
-							            		<label>Nhập mã xác nhận email</label>
-							            		<input type="text" class="form-control" name="ktDonHang" placeholder="Mã xác nhận gửi về email" required="required">
-								            </div>
-								            <div class="form-group">
-								            		<button type="submit" class="btn" style="float:right">
-								            			Xác nhận
-								            		</button>
-								            </div>
-										</form>
+			                    	<%
+			                    	if( !loiGuiEmailXnTuServer.equals("") )
+			                    	{
+		                    		%>
+		                    		<div class="col-sm-12" style="text-align:center; margin-bottom: 30px;">
+					                    <span id="LoiGuiEmailXnTuServer" class="col-xs-12 alert alert-warning"><%=loiGuiEmailXnTuServer %></span>
+					                </div>
+		                    		<%
+			                    	}
+			                    	%>
+			                    	<div class="col-md-7 col-sm-7 col-xs-10 col-md-offset-3 col-sm-offset-3 col-xs-offset-1">
+										<%
+											String thanhCong = (String)session.getAttribute("dKThanhCong");
+											String thatBai = (String)session.getAttribute("dKThatBai");
+											String maXacNhanSai = (String)session.getAttribute("maXacNhanDKSai");
+											if( thanhCong != null ){
+										%>
+											<div class="alert alert-success"><%=thanhCong %> Mời <a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP%>">đăng nhập</a> vào tài khoản.</div>		
+										<%
+												session.removeAttribute("dKThanhCong");
+											}
+											if( thatBai != null ){ 
+										%>
+											<div class="alert alert-danger"><%=thatBai %> Quay về <a href="${kyanhbooksRootPath}">trang chủ</a>.</div>		
+										<%	
+											session.removeAttribute("dKThatBai");
+											}
+											if( maXacNhanSai != null ){
+										%>
+											<div class="alert alert-danger"><%=maXacNhanSai %></div>
+										<%
+											session.removeAttribute("maXacNhanDKSai");
+											} 
+											
+											KhachHang kh = (KhachHang)session.getAttribute("TaiKhoanDK");
+											if( kh != null ){ 
+										%>
+											<form method="post" action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY%>" id="formXacNhanDK" class="form-horizontal">
+												<div class="form-group">
+									            	<label for="email">Đăng nhập vào email <span style="color:#F47920;">&quot;<% if (kh != null ){ out.print(kh.getEmail()); } %>&quot;</span> để lấy mã xác nhận</label>
+									            	<input type="hidden" name="email" id="email" value="<%=(kh != null ) ? kh.getEmail() : ""%>" />
+									            </div>
+									            <div class="form-group">
+								            		<label class="col-md-4 col-sm-4 col-xs-12" style="padding:0px">Nhập mã xác nhận: </label>
+								            		<div class="col-md-8 col-sm-8 col-xs-12" style="padding:0px">
+								            			<input type="text" class="form-control" name="maXN" placeholder="Mã xác nhận gửi về email" required="required">
+								            		</div>
+									            </div>
+									            <div class="form-group">
+									            		<button type="submit" class="btn" style="float:right">
+									            			Xác nhận
+									            		</button>
+									            </div>
+											</form>
+										<%
+											} 
+										%>
 									</div>
 			                    </div>
 							</div>
@@ -99,7 +150,7 @@
 		<!-- kt phần nội dung sản phẩm -->
 
 		<!-- phần footer  -->
-		<jsp:include page="block/footer.jsp" />
+		<jsp:include page="${userViewBlockPath}footer.jsp" />
 		<!-- kt footer  -->
 	</div>
 </body>

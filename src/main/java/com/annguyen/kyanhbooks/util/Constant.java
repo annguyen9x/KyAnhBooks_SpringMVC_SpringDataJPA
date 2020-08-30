@@ -38,8 +38,11 @@ public class Constant {
 		public static final String USER_CONTROLLER_KHACH_HANG_XEM_LICHSU_MUAHANG = "XemLichSuMuaHang";
 		public static final String USER_CONTROLLER_KHACH_HANG_DANG_XUAT = "DangXuat";
 		public static final String USER_CONTROLLER_KHACH_HANG_QUEN_MATKHAU = "QuenMatKhau";
-		public static final String USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL = "LayMaXnEmail";
-		public static final String USER_CONTROLLER_XAC_NHAN_EMALI = "XacNhanEmail";
+		public static final String USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL_QUEN_MATKHAU = "LayMaXnEmailQMK";
+		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_QUEN_MATKHAU = "XacNhanEmailQMK";
+		public static final String USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL_DANG_KY = "LayMaXnEmailDangKy";
+		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY = "XacNhanEmailDangKy";
+		public static final String USER_CONTROLLER_GUI_EMAIL_KHI_DAT_HANG = "GuiEmailKhiDatHang";
 		public static final String USER_CONTROLLER_THEO_DOI_DON_HANG = "TheoDoiDonHang";
 		
 		
@@ -95,12 +98,12 @@ public class Constant {
 //		public static final String GIA_TRI_DIA_CHI_SHOP_2 = "DiaChi_Shop2";
 		
 		//Email gửi thông tin từ shop
-		public static final String GIA_TRI_EMAIL_XN_DANGKY_TIEU_DE = "XnEmailDangKy_TieuDe";
-		public static final String GIA_TRI_EMAIL_XN_DANGKY_NOI_DUNG = "XnEmailDangKy_NoiDung";
+		public static final String GIA_TRI_EMAIL_XN_DANGKY_TIEU_DE = "Xác nhận đăng ký tài khoản tại [kyanhbooks.com]";
+		public static final String GIA_TRI_EMAIL_XN_DANGKY_NOI_DUNG = "Mã xác nhận email đăng ký: ";
 		public static final String GIA_TRI_EMAIL_XN_QUEN_MATKHAU_TIEU_DE = "Xác nhận đăng nhập tài khoản tại [kyanhbooks.com] khi quên mật khẩu";
 		public static final String GIA_TRI_EMAIL_XN_QUEN_MATKHAU_NOI_DUNG = "Mã xác nhận email đăng nhập: ";
-		public static final String GIA_TRI_EMAIL_GUI_HOADON_TIEU_DE = "XnEmailGuiHoaDon_TieuDe";
-		public static final String GIA_TRI_EMAIL_GUI_HOADON_NOI_DUNG = "XnEmailGuiHoaDon_NoiDung";
+		public static final String GIA_TRI_EMAIL_GUI_HOADON_TIEU_DE = "";
+		public static final String GIA_TRI_EMAIL_GUI_HOADON_NOI_DUNG = "";
 		
 		//Phân trang
 		public static final int GIA_TRI_LIMIT_SP_THEO_LOAISP = 2; 
@@ -145,6 +148,14 @@ public class Constant {
 	public interface TienTe{
 		public static final String TIEN_COMMA_PATTERN = "###,###,###";
 		public static final String DON_VI_TIEN_TE_VN = "đ";
+	}
+	
+	//Định dạng ngày tháng
+	public interface NgayThang{
+		public static final String DATE_TIME_US = "yyyy-MM-dd";
+		public static final String DATE_TIME_US_FULL = "yyyy-MM-dd HH:mm:ss";
+		public static final String DATE_TIME_VN1 = "";
+		public static final String DATE_TIME_VN1_FULL = "";
 	}
 	
 	//Tên các nút - button

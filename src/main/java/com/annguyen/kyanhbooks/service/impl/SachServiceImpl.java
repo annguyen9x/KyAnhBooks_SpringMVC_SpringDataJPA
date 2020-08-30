@@ -47,7 +47,8 @@ public class SachServiceImpl implements SachService {
 
 	@Override
 	public Sach getSachTheoMaSach(String maSach) {
-		Sach sach = sachRepository.findSachByMaSach(maSach);
+		//Sach sach = sachRepository.findSachByMaSach(maSach);
+		Sach sach = sachRepository.findOne(maSach);
 		return sach;
 	}
 

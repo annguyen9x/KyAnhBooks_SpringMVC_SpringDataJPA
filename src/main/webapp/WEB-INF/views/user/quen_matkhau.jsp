@@ -98,7 +98,7 @@
 				                    		<span class="lay_mk">Cung cấp email để đăng nhập bằng mã xác nhận</span>
 				                    	</h2>
 				                    	<div class="col-md-6 col-md-offset-3">
-											<form method="post" action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL%>" class="form-horizontal">
+											<form method="post" action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL_QUEN_MATKHAU%>" class="form-horizontal">
 												<div class="form-group">
 									            	<label for="email">Email</label>
 								            		<input type="email" class="form-control" name="email" value="<%if(email != null){out.print(email);} %>" placeholder="Email đăng nhập" required="required">
@@ -124,7 +124,7 @@
 							            	  	if(kiemTraEmailDangNhap != null && kiemTraEmailDangNhap.equals("EmailTonTai")){
 							            	  		
 							            	  %>
-									          <form method="post" action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_XAC_NHAN_EMALI%>" class="form-horizontal">
+									          <form method="post" action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_XAC_NHAN_EMAIL_QUEN_MATKHAU%>" class="form-horizontal">
 									            <div class="form-group">
 								            		<label>Nhập mã xác nhận</label>
 								            		<input type="text" class="form-control" name="maXN" placeholder="Nhập mã xác nhận được gửi về email" required="required">

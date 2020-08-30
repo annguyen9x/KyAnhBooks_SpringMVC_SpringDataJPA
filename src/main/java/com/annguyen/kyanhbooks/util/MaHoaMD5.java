@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MaHoaMD5 {
 	//MD5 là thuật toán tạo chuỗi băm một chiều, không thể dịch ngược (theo lý thuyết)
-	public static String mahoaMD5(String chuoi) {
+	public static String MahoaMD5(String chuoi) {
 		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("MD5");

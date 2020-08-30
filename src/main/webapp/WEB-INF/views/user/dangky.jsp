@@ -3,6 +3,7 @@
 <%@ include file="/WEB-INF/views/user/init.jsp"%>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,10 +32,17 @@
 <!-- end my js -->
 
 </head>
+<%
+	String urlDangKy = Constant.Path.KYANHBOOKS_ROOT_PATH + Constant.Path.USER_CONTROLLER_KHACH_HANG_DANGKY;
+	String errorThongTinDangKy = "";	
+	if( session.getAttribute("errorThongTinDangKy") != null ){
+		errorThongTinDangKy = session.getAttribute("errorThongTinDangKy").toString();
+	}
+%>
 <body>
 	<div class="wrapper">
 		<!-- phần header  -->
-		<jsp:include page="block/header.jsp" />
+		<jsp:include page="${userViewBlockPath}header.jsp" />
 		<!-- kt header  -->
 		
 		<!-- phần nội dung sản phẩm -->
@@ -72,59 +80,91 @@
 			                    	<h2 class="col-xs-12 text-center">
 			                    		<span>Thông tin đăng ký tài khoản khách hàng</span>
 			                    	</h2>
-									<form method="post" action="./xacthuc_dangky.jsp" id="formDK" onsubmit="return validation();" class="form-horizontal">
+			                    	
+			                    	<%
+			                    	if( !errorThongTinDangKy.equals("") ){
+			                    	%>
+			                    	<div class="col-sm-12" style="text-align:center; margin-bottom: 30px;">
+					                    <span id="errorThongTinDangKy" class="col-xs-12 alert alert-warning"><%=errorThongTinDangKy %></span>
+					                </div>
+			                    	<%
+			                    	}
+			                    	%>
+			                    	
+			                    	<form:form modelAttribute="KhachHang" method="post" action="<%=urlDangKy %>" onsubmit="return validation();" class="form-horizontal">
 										<div class="form-group">
-							                <label for="name" class="col-sm-3 control-label">Họ tên<span class="warning"> (*)</span></label>
+							                <form:label path="tenKH" class="col-sm-3 control-label">Họ tên<span class="warning"> (*)</span></form:label>
 							                <div class="col-sm-9">
-							                    <input type="text" class="form-control" name="hoten" id="hoten" focus=""/>
+			                    				<form:input path="tenKH" type="text" class="form-control" name="hoten" id="hoten" focus=""/>
 							                    <span id="errorHoten" class="col-xs-12 error warning"></span>
 							                </div>
 							            </div>
 							            <div class="form-group">
-							            	<label for="pwd" class="col-sm-3 control-label">Mật khẩu<span class="warning"> (*)</span></label>
+							            	<form:label path="matKhau" class="col-sm-3 control-label">Mật khẩu<span class="warning"> (*)</span></form:label>
 							            	<div class="col-sm-9">
-							            		<input type="password" class="form-control" name="matkhau" id="matkhau">
+							            		<form:input path="matKhau" type="password" class="form-control" name="matkhau" id="matkhau" />
 							            		<span id="errorMatkhau" class="col-xs-12 error warning"></span>
 							            	</div>
 							            </div>
 							            <div class="form-group">
-							            	<label for="rePassword" class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning"> (*)</span></label>
+							            	<label path="matKhau" class="col-sm-3 control-label">Nhập lại mật khẩu<span class="warning"> (*)</span></label>
 							            	<div class="col-sm-9">
-							            		<input type="password" class="form-control" name="nlMatkhau" id="nlMatkhau">
+							            		<input type="password" class="form-control" name="nlMatkhau" id="nlMatkhau" />
 							            		<span id="errorNlMatkhau" class="col-xs-12 error warning"></span>
 							            	</div>
 							            </div>
 							            <div class="form-group">
-							            	<label for="email" class="col-sm-3 control-label">Email<span class="warning"> (*)</span></label>
+							            	<form:label path="email" class="col-sm-3 control-label">Email<span class="warning"> (*)</span></form:label>
 							            	<div class="col-sm-9">
-							            		<input type="email" class="form-control" name="email" id="email">
-							            		<span id="errorEmail" class="col-xs-12 error warning"></span>
+							            		<form:input path="email" type="email" class="form-control" name="email" id="email" />
+							            		<span id="errorEmail" class="col-xs-12 error warning">
+							            		<% 
+							            			String emailTonTai =  (String)session.getAttribute("errorEmail");
+							            			if( emailTonTai != null ){
+							            		%>
+							            			<%=emailTonTai %>
+							            		<%
+							            				session.removeAttribute("errorEmail");
+							            			}
+							            		%>
+							            		</span>
 							            	</div>
 							            </div>
 							            <div class="form-group">
-							            	<label for="dienthoai" class="col-sm-3 control-label">Điện thoại<span class="warning"> (*)</span></label>
+							            	<form:label path="dienThoai" class="col-sm-3 control-label">Điện thoại<span class="warning"> (*)</span></form:label>
 							            	<div class="col-sm-9">
-							            		<input type="text" class="form-control" name="dienthoai" id="dienthoai">
-							            		<span id="errorDienthoai" class="col-xs-12 error warning"></span>
+							            		<form:input path="dienThoai" type="text" class="form-control" name="dienthoai" id="dienthoai" />
+							            		<span id="errorDienthoai" class="col-xs-12 error warning">
+							            		<% 
+							            			String dienThoailTonTai =  (String)session.getAttribute("errorDienthoai");
+							            			if( dienThoailTonTai != null ){
+							            		%>
+							            			<%=dienThoailTonTai %>
+							            		<%
+							            				session.removeAttribute("errorDienthoai");
+							            			}
+							            		%>
+							            		</span>
 							            	</div>
 							            </div>
 							            <div class="form-group form-inline">
-							            	<label for="" class="col-sm-3 control-label">Giới Tính</label>
+							            	<form:label path="gioiTinh" class="col-sm-3 control-label">Giới Tính</form:label>
 							            	<div class="col-sm-9">
 							            		<div class="col-xs-2">
-							            			<input class="form-control" type="radio" name="gioitinh" value="Nam" checked="checked">Nam
+							            			<form:radiobutton path="gioiTinh" class="form-control" name="gioitinh" value="Nam" checked="checked" />Nam
 							            		</div>
 								            	<div class="col-xs-2">
-								            		<input class="form-control" type="radio" name="gioitinh" value="Nữ">Nữ
+								            		<form:radiobutton path="gioiTinh" class="form-control" name="gioitinh" value="Nữ" />Nữ
 								            	</div>
 								            	<div class="col-xs-2">
-								            		<input class="form-control" type="radio" name="gioitinh" value="Khác">Khác
+								            		<form:radiobutton path="gioiTinh" class="form-control" name="gioitinh" value="Khác" />Khác
 								            	</div>
 							            	</div>
 							            </div>
 							            <div class="form-group form-inline">
 							            	<label for="ngaysinh" class="col-sm-3 control-label">Ngày sinh<span class="warning"> (*)</span></label>
 							            	<div class="col-sm-9">
+							            	
 							            		<select name="ngaysinh" id="ngaysinh" class="col-xs-4 form-control">
 							            			<%
 							            				for(int i = 1; i <= 31; i++){
@@ -157,21 +197,22 @@
 							            	</div>
 							            </div>
 							             <div class="form-group">
-							            	<label for="diachi" class="col-sm-3 control-label">Địa chỉ<span class="warning"> (*)</span></label>
+							            	<form:label path="diaChi" class="col-sm-3 control-label">Địa chỉ<span class="warning"> (*)</span></form:label>
 							            	<div class="col-sm-9">
-							            		<input type="text"class="form-control" name="diachi" id="diachi">
+							            		<form:input path="diaChi" type="text" class="form-control" name="diachi" id="diachi" />
 							            		<span id="errorDiachi" class="col-xs-12 error warning"></span>
 							            	</div>
 							            </div>
 
 							            <div class="form-group">
 							            	<div class="col-xs-8 col-xs-offset-4">
-							            		<button type="submit" class="btn">
+							            		<form:button type="submit" class="btn">
 							            			Đăng ký
-							            		</button>
+							            		</form:button>
 							            	</div>
 							            </div>
-									</form>
+									</form:form>
+									
 			                    </div>
 							</div>
 						</div>
@@ -183,7 +224,7 @@
 		<!-- kt phần nội dung sản phẩm -->
 
 		<!-- phần footer  -->
-		<jsp:include page="block/footer.jsp" />
+		<jsp:include page="${userViewBlockPath}footer.jsp" />
 		<!-- kt footer  -->
 	</div>
 </body>

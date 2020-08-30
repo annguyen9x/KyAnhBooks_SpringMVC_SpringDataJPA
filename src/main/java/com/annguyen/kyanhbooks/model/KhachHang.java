@@ -24,10 +24,10 @@ public class KhachHang {
 	@Column(name = "MatKhau")
 	private String matKhau;
 	
-	@Column(name = "Email")
+	@Column(name = "Email", unique = true)
 	private String email;
 	
-	@Column(name = "DienThoai")
+	@Column(name = "DienThoai", unique = true)
 	private String dienThoai;
 	
 	@Column(name = "GioiTinh")

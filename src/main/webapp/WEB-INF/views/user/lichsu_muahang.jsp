@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
+<%@ include file="/WEB-INF/views/user/init.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,29 +12,29 @@
 <title>Lịch sử mua hàng</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <!--  start bootstrap -->
-<link rel="stylesheet" type="text/css" href="../static/bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
-<script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../static/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+<script type="text/javascript" src="${userStaticRootPath}js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="${userStaticRootPath}bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
 <!--  end bootstrap -->
 <!-- start fontawesome -->
-<link rel="stylesheet" href="../static/font/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${userStaticRootPath}font/font-awesome-4.7.0/css/font-awesome.min.css">
 <!-- start fontawesome -->
 <!-- start facebook -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=2525119214214430&autoLogAppEvents=1"></script>
 <!-- end facebook -->
 <!-- start my css -->
-<link rel="stylesheet" type="text/css" href="../static/css/trangchu.css"/>
+<link rel="stylesheet" type="text/css" href="${userStaticRootPath}css/trangchu.css"/>
 <!-- end my css -->
 <!-- start my js -->
-	<script src="../static/js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../static/js/formValidation.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/menuAnHien.js" type="text/javascript" charset="utf-8"></script>
+	<script src="${userStaticRootPath}js/formValidation.js" type="text/javascript" charset="utf-8"></script>
 <!-- end my js -->
 
 </head>
 <body>
 	<div class="wrapper">
 		<!-- phần header  -->
-		<jsp:include page="block/header.jsp" />
+		<jsp:include page="${userViewBlockPath}header.jsp" />
 		<!-- kt header  -->
 		
 		<!-- phần nội dung sản phẩm -->
@@ -48,9 +49,9 @@
 						        </span>
 						    </h2>
 						    <ul>
-						        <li class="list-li"><a href="capnhat_taikhoan.jsp" class="text-a"><span class="glyphicon glyphicon-user"></span> Cập nhật tài khoản</a></li>
-						        <li class="list-li"><a href="lichsu_muahang.jsp" class="text-a"><i class="glyphicon glyphicon-list"></i> Xem lịch sử mua hàng</a></li>
-						        <li class="list-li"><a href="dang_xuat.jsp" class="text-a"><i class="glyphicon glyphicon-log-out"></i> Đăng xuất</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_HIENTHI_CAPNHAT_TAIKHOAN%>" class="text-a"><span class="glyphicon glyphicon-user"></span> Cập nhật tài khoản</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_XEM_LICHSU_MUAHANG%>" class="text-a"><i class="glyphicon glyphicon-list"></i> Xem lịch sử mua hàng</a></li>
+						        <li class="list-li"><a href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_KHACH_HANG_DANG_XUAT%>" class="text-a"><i class="glyphicon glyphicon-log-out"></i> Đăng xuất</a></li>
 						    </ul>
 						</div>
 					</div>
@@ -112,7 +113,7 @@
 		<!-- kt phần nội dung sản phẩm -->
 
 		<!-- phần footer  -->
-		<jsp:include page="block/footer.jsp" />
+		<jsp:include page="${userViewBlockPath}footer.jsp" />
 		<!-- kt footer  -->
 	</div>
 </body>

@@ -7,4 +7,7 @@ import com.annguyen.kyanhbooks.model.KhachHang;
 public interface KhachHangRepository extends JpaRepository<KhachHang, Integer> {
 	
 	KhachHang findKhachHangByEmail(String email);
+	
+	KhachHang findKhachHangByDienThoai(String dienThoai);
+	
 }
