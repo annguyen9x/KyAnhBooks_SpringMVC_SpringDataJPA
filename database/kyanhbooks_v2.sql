@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 26, 2020 lúc 06:23 PM
+-- Thời gian đã tạo: Th8 31, 2020 lúc 06:45 PM
 -- Phiên bản máy phục vụ: 8.0.19
 -- Phiên bản PHP: 7.4.7
 
@@ -57,22 +57,14 @@ INSERT INTO `chitiethoadon` (`SoHD`, `MaSach`, `SoLuong`, `DonGia`) VALUES
 
 CREATE TABLE `giohang` (
   `Id` int NOT NULL,
-  `SessionId` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `DienThoai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `DonGia` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `HoTen` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaKH` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaSach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SessionId` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `SoLuong` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `giohang`
---
-
-INSERT INTO `giohang` (`Id`, `SessionId`, `DienThoai`, `DonGia`, `HoTen`, `MaKH`, `MaSach`, `SoLuong`) VALUES
-(1, 'a-10', '0987654321', '120000 ', 'Lê Trung Kiên', NULL, 'SNN014', '3'),
-(2, 'a-12', NULL, '6000', NULL, '1003', 'SGK011', '8');
 
 -- --------------------------------------------------------
 
@@ -82,12 +74,14 @@ INSERT INTO `giohang` (`Id`, `SessionId`, `DienThoai`, `DonGia`, `HoTen`, `MaKH`
 
 CREATE TABLE `hoadon` (
   `SoHD` int NOT NULL,
-  `ThayDoiNN` varchar(6) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `TongTien` decimal(18,2) DEFAULT '0.00',
   `NgayDat` date DEFAULT NULL,
   `NgayGiao` date DEFAULT NULL,
   `TinhTrangDH` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `MaNVGiao` int DEFAULT NULL,
+  `TenNN` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DienThoaiNN` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DiaChiNN` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `MaKH` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -95,12 +89,12 @@ CREATE TABLE `hoadon` (
 -- Đang đổ dữ liệu cho bảng `hoadon`
 --
 
-INSERT INTO `hoadon` (`SoHD`, `ThayDoiNN`, `TongTien`, `NgayDat`, `NgayGiao`, `TinhTrangDH`, `MaNVGiao`, `MaKH`) VALUES
-(10000001, 'Co', '414000.00', '2019-11-20', '2019-11-23', 'Hoàn tất', 1001, 1001),
-(10000002, 'Khong', '214000.00', '2019-11-20', '2019-11-23', 'Trả lại hàng', 1005, 1002),
-(10000003, 'Khong', '299000.00', '2019-11-25', NULL, 'Đang giao hàng', 1005, 1004),
-(10000004, 'Co', '200000.00', '2019-11-25', NULL, 'Đợi người giao lấy hàng', 1001, 1003),
-(10000005, 'Co', '365000.00', '2019-12-01', NULL, 'Đang chuẩn bị hàng', 1001, 1001);
+INSERT INTO `hoadon` (`SoHD`, `TongTien`, `NgayDat`, `NgayGiao`, `TinhTrangDH`, `MaNVGiao`, `TenNN`, `DienThoaiNN`, `DiaChiNN`, `MaKH`) VALUES
+(10000001, '414000.00', '2019-11-20', '2019-11-23', 'Hoàn tất', 1001, 'Phan Mỹ Tâm', '0981246789', '30 Trần Hưng Đạo, Q.1, TP. Hồ Chí Minh', 1001),
+(10000002, '214000.00', '2019-11-20', '2019-11-23', 'Trả lại hàng', 1005, 'Đàm Vĩnh Hưng', '0341238756', 'P. Hưng lợi, Q. Ninh Kiều, TP. Cần Thơ', 1002),
+(10000003, '299000.00', '2019-11-25', NULL, 'Đang giao hàng', 1005, 'Lê Anh Minh', '0123987056', '	\r\nP. Thuận Phước, Q. Hải Châu, TP. Đà Nẵng', 1004),
+(10000004, '200000.00', '2019-11-25', NULL, 'Đợi người giao lấy hàng', 1001, 'Nguyễn Văn Đức', '0981246777', 'Kỳ Anh, Hà Tĩnh', 1003),
+(10000005, '365000.00', '2019-12-01', NULL, 'Đang chuẩn bị hàng', 1001, 'Hồ Vĩnh Phúc', '0981244444', 'Hoàn Kiếm, Hà Nội', 1001);
 
 -- --------------------------------------------------------
 
@@ -128,7 +122,8 @@ INSERT INTO `khachhang` (`MaKH`, `TenKH`, `MatKhau`, `Email`, `DienThoai`, `Gioi
 (1002, 'Đàm Vĩnh Hưng', 'e10adc3949ba59abbe56e057f20f883e', 'lvhung@gmail.com', '0341238756', 'Nam', '1987-12-22', 'P. Hưng lợi, Q. Ninh Kiều, TP. Cần Thơ'),
 (1003, 'Nguyễn Văn An', 'e10adc3949ba59abbe56e057f20f883e', 'nguyenva09@gmail.com', '0971246469', 'Nam', '1997-10-19', 'P. 10, TP. Đà Lạt, T. Lâm Đồng'),
 (1004, 'Bùi Thu Thủy', 'e10adc3949ba59abbe56e057f20f883e', 'btthuy@gmail.com', '0241338777', 'Nữ', '1999-02-16', 'P. Nam Hà, TP. Hà Tĩnh, T. Hà Tĩnh'),
-(1005, 'Lê Anh Minh', 'e10adc3949ba59abbe56e057f20f883e', 'laminh@gmail.com', '0123987056', 'Nam', '1980-11-25', 'P. Thuận Phước, Q. Hải Châu, TP. Đà Nẵng');
+(1005, 'Lê Anh Minh', 'e10adc3949ba59abbe56e057f20f883e', 'laminh@gmail.com', '0123987056', 'Nam', '1980-11-25', 'P. Thuận Phước, Q. Hải Châu, TP. Đà Nẵng'),
+(1009, 'AnTest CN', 'e10adc3949ba59abbe56e057f20f883e', 'nguyenva09it@gmail.com', '1234567899', 'Nam', '2020-08-31', 'AnTest 30/0/2020 CN');
 
 -- --------------------------------------------------------
 
@@ -153,28 +148,6 @@ INSERT INTO `loaisach` (`MaLoaiSach`, `TenLoaiSach`) VALUES
 ('LS05', 'Sách Học Ngoại Ngữ'),
 ('LS06', 'Sách Văn Học'),
 ('LS07', 'Sách Thiếu Nhi');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `nguoinhanhang`
---
-
-CREATE TABLE `nguoinhanhang` (
-  `SoHD` int NOT NULL,
-  `TenNN` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DienThoai` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DiaChi` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Đang đổ dữ liệu cho bảng `nguoinhanhang`
---
-
-INSERT INTO `nguoinhanhang` (`SoHD`, `TenNN`, `DienThoai`, `DiaChi`) VALUES
-(10000001, 'Võ Hoài Linh', '0987655577', 'P. Cam Linh, TP. Cam Ranh, T. Khánh Hòa'),
-(10000004, 'Nguyễn Anh Quốc', '0966798765', 'P. Hà Huy Tập, TP. Hà Tĩnh, T. Hà Tĩnh'),
-(10000005, 'Hà Anh Tuấn', '0981246789', '25 Nguyễn Văn Bình, Q.1, TP. Hồ Chí Minh');
 
 -- --------------------------------------------------------
 
@@ -284,9 +257,9 @@ ALTER TABLE `chitiethoadon`
 --
 ALTER TABLE `giohang`
   ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `SessionId` (`SessionId`),
-  ADD UNIQUE KEY `DienThoai` (`DienThoai`),
-  ADD UNIQUE KEY `MaKH` (`MaKH`);
+  ADD UNIQUE KEY `UK_lwwvqs5hyfmf4phl4o1s39jue` (`DienThoai`),
+  ADD UNIQUE KEY `UK_rcn9ocgqjvueharq4yg8twcp0` (`MaKH`),
+  ADD UNIQUE KEY `UK_2f14uhy9h1yxyae0frc7bkjvv` (`SessionId`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
@@ -302,19 +275,15 @@ ALTER TABLE `hoadon`
 ALTER TABLE `khachhang`
   ADD PRIMARY KEY (`MaKH`),
   ADD UNIQUE KEY `UQ__KhachHan__1F0318762F4AE563` (`DienThoai`),
-  ADD UNIQUE KEY `UQ__KhachHan__A9D10534F73F748B` (`Email`);
+  ADD UNIQUE KEY `UQ__KhachHan__A9D10534F73F748B` (`Email`),
+  ADD UNIQUE KEY `UK_3vlqe0myv9efbmh0f0ydedgnf` (`DienThoai`),
+  ADD UNIQUE KEY `UK_r3j5f0p3a0m28fagiih9814ao` (`Email`);
 
 --
 -- Chỉ mục cho bảng `loaisach`
 --
 ALTER TABLE `loaisach`
   ADD PRIMARY KEY (`MaLoaiSach`);
-
---
--- Chỉ mục cho bảng `nguoinhanhang`
---
-ALTER TABLE `nguoinhanhang`
-  ADD PRIMARY KEY (`SoHD`);
 
 --
 -- Chỉ mục cho bảng `nhanvien`
@@ -346,7 +315,7 @@ ALTER TABLE `sach`
 -- AUTO_INCREMENT cho bảng `giohang`
 --
 ALTER TABLE `giohang`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `hoadon`
@@ -358,7 +327,7 @@ ALTER TABLE `hoadon`
 -- AUTO_INCREMENT cho bảng `khachhang`
 --
 ALTER TABLE `khachhang`
-  MODIFY `MaKH` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+  MODIFY `MaKH` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1016;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
@@ -383,12 +352,6 @@ ALTER TABLE `chitiethoadon`
 ALTER TABLE `hoadon`
   ADD CONSTRAINT `FK__HoaDon__MaKH__KH` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`) ON UPDATE CASCADE,
   ADD CONSTRAINT `FK__HoaDon__MaNV_NV` FOREIGN KEY (`MaNVGiao`) REFERENCES `nhanvien` (`MaNV`) ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `nguoinhanhang`
---
-ALTER TABLE `nguoinhanhang`
-  ADD CONSTRAINT `FK__NNH__SoHD__HD` FOREIGN KEY (`SoHD`) REFERENCES `hoadon` (`SoHD`) ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `sach`
