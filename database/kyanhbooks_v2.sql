@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 31, 2020 lúc 06:45 PM
+-- Thời gian đã tạo: Th9 02, 2020 lúc 07:04 PM
 -- Phiên bản máy phục vụ: 8.0.19
 -- Phiên bản PHP: 7.4.7
 
@@ -56,15 +56,27 @@ INSERT INTO `chitiethoadon` (`SoHD`, `MaSach`, `SoLuong`, `DonGia`) VALUES
 --
 
 CREATE TABLE `giohang` (
-  `Id` int NOT NULL,
-  `DienThoai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `DonGia` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `HoTen` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `MaKH` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SessionIdGH` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `DaXoa` bit(1) DEFAULT NULL,
+  `DiaChi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DienThoai` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `DonGia` float DEFAULT NULL,
+  `MaKH` int DEFAULT NULL,
   `MaSach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `SessionId` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `SoLuong` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `NgayCapNhat` datetime DEFAULT NULL,
+  `NgayTao` datetime DEFAULT NULL,
+  `SoHD` int DEFAULT NULL,
+  `SoLuong` int DEFAULT NULL,
+  `TenKH` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `giohang`
+--
+
+INSERT INTO `giohang` (`SessionIdGH`, `DaXoa`, `DiaChi`, `DienThoai`, `DonGia`, `MaKH`, `MaSach`, `NgayCapNhat`, `NgayTao`, `SoHD`, `SoLuong`, `TenKH`) VALUES
+('sessionid-0987654321', NULL, NULL, '0987654321', 59000, NULL, 'SKC002', NULL, '2020-09-02 00:00:01', NULL, 4, 'Le Van Khach Vang Lai'),
+('sessionid-1001', NULL, NULL, '0981246789', 155000, 1001, 'SKC001', NULL, '2020-09-01 00:00:01', NULL, 1, 'Phan My Tam');
 
 -- --------------------------------------------------------
 
@@ -256,10 +268,9 @@ ALTER TABLE `chitiethoadon`
 -- Chỉ mục cho bảng `giohang`
 --
 ALTER TABLE `giohang`
-  ADD PRIMARY KEY (`Id`),
+  ADD PRIMARY KEY (`SessionIdGH`),
   ADD UNIQUE KEY `UK_lwwvqs5hyfmf4phl4o1s39jue` (`DienThoai`),
-  ADD UNIQUE KEY `UK_rcn9ocgqjvueharq4yg8twcp0` (`MaKH`),
-  ADD UNIQUE KEY `UK_2f14uhy9h1yxyae0frc7bkjvv` (`SessionId`);
+  ADD UNIQUE KEY `UK_rcn9ocgqjvueharq4yg8twcp0` (`MaKH`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
@@ -312,12 +323,6 @@ ALTER TABLE `sach`
 --
 
 --
--- AUTO_INCREMENT cho bảng `giohang`
---
-ALTER TABLE `giohang`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
@@ -350,6 +355,7 @@ ALTER TABLE `chitiethoadon`
 -- Các ràng buộc cho bảng `hoadon`
 --
 ALTER TABLE `hoadon`
+  ADD CONSTRAINT `FK_14wg71nuwfnckinr6axiroyfl` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`),
   ADD CONSTRAINT `FK__HoaDon__MaKH__KH` FOREIGN KEY (`MaKH`) REFERENCES `khachhang` (`MaKH`) ON UPDATE CASCADE,
   ADD CONSTRAINT `FK__HoaDon__MaNV_NV` FOREIGN KEY (`MaNVGiao`) REFERENCES `nhanvien` (`MaNV`) ON UPDATE CASCADE;
 
