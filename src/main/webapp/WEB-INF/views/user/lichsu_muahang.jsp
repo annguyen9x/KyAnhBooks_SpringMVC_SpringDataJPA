@@ -1,7 +1,9 @@
+<%@page import="com.annguyen.kyanhbooks.util.DinhDang"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 <%@ include file="/WEB-INF/views/user/init.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -31,6 +33,9 @@
 <!-- end my js -->
 
 </head>
+<%
+	List<Object[]> listHoaDonAndKhachHang = (List<Object[]>)request.getAttribute("ListHoaDonAndKhachHang");
+%>
 <body>
 	<div class="wrapper">
 		<!-- phần header  -->
@@ -72,7 +77,19 @@
 			                    	<h2 class="col-xs-12 text-center">
 			                    		<span>Lịch sử mua hàng</span>
 			                    	</h2>
-									<table class="table">
+			                    	<%
+										if( listHoaDonAndKhachHang == null || (listHoaDonAndKhachHang != null && listHoaDonAndKhachHang.size() == 0 ) ){
+									%>
+									<div class="col-xs-12">
+										<div class="alert alert-danger">
+											<strong>Bạn chưa đặt đơn hàng nào, danh sách rỗng.</strong> Vui lòng mua hàng để xem lịch sử !
+										</div> 
+									</div>
+									<%
+										}
+										if( listHoaDonAndKhachHang != null && listHoaDonAndKhachHang.size() > 0 ){
+									%>
+									<table class="table my_border">
 										<thead style="background:#5a5858; color:#fff">
 											<tr>
 												<th>STT</th>
@@ -84,24 +101,39 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>0123456</td>
-												<td>20/12/2019</td>
-												<td>200.000</td>
-												<td>Đang giao</td>
-												<td><a href="theodoi_donhang.jsp">Xem chi tiết</a></td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>0123456</td>
-												<td>24/12/2019</td>
-												<td>200.000</td>
-												<td>Hoàn tất</td>
-												<td><a href="theodoi_donhang.jsp">Xem chi tiết</a></td>
-											</tr>
+											<%
+												for(int i = 0; i < listHoaDonAndKhachHang.size(); i++){
+													String soHD = (listHoaDonAndKhachHang.get(i)[0]).toString();
+													String tongTienStr = listHoaDonAndKhachHang.get(i)[1].toString();
+													int tongTien = Integer.parseInt(tongTienStr.substring(0, tongTienStr.lastIndexOf(Constant.KyTuDacBiet.DOT)));
+													Date ngayDat = (Date)listHoaDonAndKhachHang.get(i)[2];
+													String tinhTrang = (listHoaDonAndKhachHang.get(i)[4]).toString();
+											%>
+												<tr>
+													<td><%=i+1 %></td>
+													<td><%=soHD %></td>
+													<td>
+														<%=DinhDang.MyStringDateFormat(ngayDat, Constant.NgayThang.DATE_TIME_VN1) %>
+													</td>
+													<td>
+														<%=DinhDang.MyNumberFormat(tongTien, Constant.TienTe.TIEN_COMMA_PATTERN)%> <%= Constant.TienTe.DON_VI_TIEN_TE_VN %>
+													</td>
+													<td><%=tinhTrang %></td>
+													<td>
+														<form action="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_THEO_DOI_DON_HANG%>" method="post">
+															<input type="hidden" name="maDH" value="<%=soHD %>" />
+															<button type="submit" class="btn btn-link">Xem chi tiết</button>
+														</form>
+													</td>
+												</tr>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
+									<%
+										}
+									%>
 			                    </div>
 							</div>
 						</div>

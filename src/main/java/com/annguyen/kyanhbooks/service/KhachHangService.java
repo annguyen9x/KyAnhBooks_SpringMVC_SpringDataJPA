@@ -1,5 +1,7 @@
 package com.annguyen.kyanhbooks.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
@@ -27,5 +29,7 @@ public interface KhachHangService {
 	boolean layMaXacNhanEmail(String tieuDe, String noiDung, String email, HttpSession session, int loaiCongViecGuiEmail) throws ErrorConnectByInternet; 
 	
 	boolean xacNhanMaXacNhanEmail(String  maXacNhanTuClient, String email, HttpSession session, int loaiCongViecGuiEmail); 
+	
+	List<Object[]> xemLichSuMuaHang(HttpSession session);
 	
 }

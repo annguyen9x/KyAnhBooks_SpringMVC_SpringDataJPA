@@ -118,7 +118,7 @@
 							                <form:label path="tenKH" class="col-sm-3 control-label">Họ tên<span class="warning"> (*)</span></form:label>
 							                <div class="col-sm-9">
 							                    <form:input path="tenKH" type="text" class="form-control" name="hoten" id="hoten" />
-							                    <form:input path="maKH" type="hidden" class="form-control" name="maKH" id="vs" />
+							                    <form:input path="maKH" type="hidden" class="form-control" name="maKH" id="maKH" />
 							                    <span id="errorHoten" class="col-xs-12 error warning"></span>
 							                </div>
 							            </div>

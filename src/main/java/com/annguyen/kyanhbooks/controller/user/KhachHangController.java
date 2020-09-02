@@ -1,5 +1,7 @@
 package com.annguyen.kyanhbooks.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,7 +166,10 @@ public class KhachHangController {
 	}
 	
 	@RequestMapping(value = "/" + Constant.Path.USER_CONTROLLER_KHACH_HANG_XEM_LICHSU_MUAHANG)
-	public String xemLichSuMuaHang() {
+	public String xemLichSuMuaHang(HttpSession session, Model model) {
+		
+		List<Object[]> listHoaDonAndKhachHang = khachHangService.xemLichSuMuaHang(session);
+		model.addAttribute("ListHoaDonAndKhachHang", listHoaDonAndKhachHang);
 		
 		return "lichsu_muahang";
 	}

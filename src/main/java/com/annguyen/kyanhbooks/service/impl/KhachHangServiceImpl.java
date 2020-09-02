@@ -1,6 +1,7 @@
 package com.annguyen.kyanhbooks.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -229,6 +230,16 @@ public class KhachHangServiceImpl implements KhachHangService {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public List<Object[]> xemLichSuMuaHang(HttpSession session) {
+		List<Object[]> list = null;
+		KhachHang khachHang = (KhachHang)session.getAttribute("KhachHang");
+		int maKH = khachHang.getMaKH();
+		list = khachHangRepository.findHoaDonAndKhachHangByMaKH(maKH);
+		
+		return list;
 	}
 	
 }

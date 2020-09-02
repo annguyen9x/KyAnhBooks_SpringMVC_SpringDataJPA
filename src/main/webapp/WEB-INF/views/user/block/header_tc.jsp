@@ -70,7 +70,7 @@
 				</div>
 				<div class="col-md-3 col-sm-4 col-xs-5">
 					<div class="cart" id="cart-block">
-	                    <a title="Giỏ hàng" href="gio_hang.jsp">
+	                    <a title="Giỏ hàng" href="${kyanhbooksRootPath}<%=Constant.Path.USER_CONTROLLER_GIO_HANG_XEM%>">
 	                    	<img src="${userStaticRootPath}img/icon/cart.png" alt="">
 	                    	<span class="text-show"><%=Constant.TenNut.GIO_HANG%></span>
 	                    	<span class="soluong_sp">0</span>

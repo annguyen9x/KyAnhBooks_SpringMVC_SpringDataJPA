@@ -26,4 +26,27 @@ public class DinhDang {
 		
 		return date;
 	}
+	
+	public static Date MyNewDateFormat(Date inputDate, String inputPattern, String outputPattern) {
+		Date outputDate = null;
+		String outputDateString = "";
+		SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+		SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+		try {
+			outputDateString = inputFormat.format(inputDate);
+			outputDate = outputFormat.parse(outputDateString);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return outputDate;
+	}
+	
+	public static String MyStringDateFormat(Date date, String pattern) {
+		String dateStr = "";
+		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+		dateStr = dateFormat.format(date);
+		
+		return dateStr;
+	}
 }

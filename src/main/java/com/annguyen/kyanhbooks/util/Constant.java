@@ -24,11 +24,7 @@ public class Constant {
 		public static final String USER_CONTROLLER_PHAN_TRANG_SACH_THEO_LOAISACH = "phanTrangSachTheoLoaiSach";
 		public static final String USER_CONTROLLER_MENU_NGANG = "menuNgang";
 		public static final String USER_CONTROLLER_CHI_TIET_SP = "ChiTietSP";
-		public static final String USER_CONTROLLER_GIO_HANG_THEM_SP= "ThemSpVaoGioHang";
-		public static final String USER_CONTROLLER_GIO_HANG_XEM = "XemGioHang";
-		public static final String USER_CONTROLLER_GIO_HANG_XOA = "XoaGioHang";
-		public static final String USER_CONTROLLER_GIO_HANG__THONGTIN_DAT_HANG = "ThongTinDatHang";
-		public static final String USER_CONTROLLER_GIO_HANG_DAT_HANG = "DatHang";
+		
 		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGNHAP = "HienThiDangNhap";
 		public static final String USER_CONTROLLER_KHACH_HANG_HIENTHI_DANGKY = "HienThiDangKy";
 		public static final String USER_CONTROLLER_KHACH_HANG_DANGNHAP = "DangNhap";
@@ -42,6 +38,13 @@ public class Constant {
 		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_QUEN_MATKHAU = "XacNhanEmailQMK";
 		public static final String USER_CONTROLLER_KHACH_HANG_LAY_MA_XN_EMAIL_DANG_KY = "LayMaXnEmailDangKy";
 		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY = "XacNhanEmailDangKy";
+		
+		public static final String USER_CONTROLLER_GIO_HANG_XEM = "XemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_THEM_SP= "ThemSpVaoGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_CAPNHAT_SP = "CapNhatSpGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_XOA = "XoaGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG__THONGTIN_DAT_HANG = "ThongTinDatHang";
+		public static final String USER_CONTROLLER_GIO_HANG_DAT_HANG = "DatHang";
 		public static final String USER_CONTROLLER_GUI_EMAIL_KHI_DAT_HANG = "GuiEmailKhiDatHang";
 		public static final String USER_CONTROLLER_THEO_DOI_DON_HANG = "TheoDoiDonHang";
 		
@@ -150,12 +153,17 @@ public class Constant {
 		public static final String DON_VI_TIEN_TE_VN = "đ";
 	}
 	
+	public interface KyTuDacBiet{
+		public static final String COMMA = ",";
+		public static final String DOT = ".";
+	}
+	
 	//Định dạng ngày tháng
 	public interface NgayThang{
 		public static final String DATE_TIME_US = "yyyy-MM-dd";
 		public static final String DATE_TIME_US_FULL = "yyyy-MM-dd HH:mm:ss";
-		public static final String DATE_TIME_VN1 = "";
-		public static final String DATE_TIME_VN1_FULL = "";
+		public static final String DATE_TIME_VN1 = "dd/MM/yyyy";
+		public static final String DATE_TIME_VN1_FULL = "dd/MM/yyyy HH:mm:ss";
 	}
 	
 	//Tên các nút - button
@@ -172,10 +180,12 @@ public class Constant {
 		public static final String KHONG_CO_SP_TRONG_LOAISACH = "Không có sản phẩm nào trong loại sách này !";
 	}
 	
+	//Form
 	public interface Form{
 		public static final String REG_MAIL = "/^[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*@[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*(\\.[A-Za-z]+)+$/";
 	}
 	
+	//Các loại công việc gửi Email
 	public interface Email{
 		public static final int LOAI_CONG_VIEC_GUI_EMAIL_QMK = 1;//Quên mật khẩu
 		public static final int LOAI_CONG_VIEC_GUI_EMAIL_XNDK = 2;//Xác nhận đăng ký
