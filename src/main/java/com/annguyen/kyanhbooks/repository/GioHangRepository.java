@@ -6,5 +6,5 @@ import com.annguyen.kyanhbooks.model.GioHang;
 
 public interface GioHangRepository extends JpaRepository<GioHang, Integer>{
 	
-	GioHang findGioHangBySessionIdOrMaKH(String sessionIdCookie, int maKH);
+	GioHang findGioHangBySessionIdGH(String sessionIdGH);
 }

@@ -40,6 +40,8 @@ public class Constant {
 		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY = "XacNhanEmailDangKy";
 		
 		public static final String USER_CONTROLLER_GIO_HANG_XEM = "XemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_DANGNHAP_XEM = "DangNhapXemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_XACNHAN_SDT_XEM = "XacNhanSDTXemGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_THEM_SP= "ThemSpVaoGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_CAPNHAT_SP = "CapNhatSpGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_XOA = "XoaGioHang";
@@ -145,6 +147,8 @@ public class Constant {
 	//GioHang
 	public interface GioHang{
 		public static final String JSESSIONID = "JSESSIONID";
+		public static final String TIENTO_JSESSIONID = "sessionid-";
+		public static final String CHUA_TAO_GIOHANG = "ChuaTaoGioHang";
 	}
 	
 	//Định dạng tiền
@@ -156,6 +160,7 @@ public class Constant {
 	public interface KyTuDacBiet{
 		public static final String COMMA = ",";
 		public static final String DOT = ".";
+		public static final String DASH = "-";
 	}
 	
 	//Định dạng ngày tháng

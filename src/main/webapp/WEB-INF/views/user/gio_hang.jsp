@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/views/user/init.jsp" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page import="com.annguyen.kyanhbooks.model.GioHang" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,6 +34,10 @@
 <!-- end my js -->
 
 </head>
+<%
+	GioHang gioHang = (GioHang)session.getAttribute("GioHang");
+	boolean isChuaTaoGioHang = Boolean.parseBoolean(request.getAttribute(Constant.GioHang.CHUA_TAO_GIOHANG).toString());
+%>
 <body>
 <div class="wrapper">
 	<!-- header  -->
@@ -53,70 +62,104 @@
 						<div class="row margin-0">
 							<!-- noi dung gio hang -->
 							<section class="gio_hang">
-								<div class="alert alert-danger">
-									<strong>Không có sản phẩm nào trong giỏ hàng.</strong> Nhấn <a href="trangchu.jsp" class="text-a">"Quay lại"</a> để mua hàng !
-								</div>
-								<form action="" method="post" id="gioHang" class="form_giohang">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>
-												Tên sách
-												</th>
-												<th>
-												Hình ảnh
-												</th>
-												<th>
-												Giá
-												</th>
-												<th>
-												Số lượng
-												</th>
-												<th>
-												Thành tiền
-												</th>
-												<th>
-												Xóa
-												</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td class="ten_sp">
-												Tên sách dgfds ágfedg Tên sách dgfds ágfedg Tên sách dgfds ágfedg
-												</td>
-												<td class="hinh">
-													<img src="${userStaticRootPath}img/sanpham/c6.jpg" alt="anh">
-												</td>
-												<td class="tien">
-													15.567457 <span class="text_underline">đ</span>
-												</td>
-												<td class="so_luong">
-													<input type="number" name="soLuong">
-												</td>
-												<td class="tien">
-													15.235.235 <span class="text_underline">đ</span>
-												</td>
-												<td class="trash">
-													<a href="#">
-														<span class="glyphicon glyphicon-trash"></span>
-													</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="tong_tien">
-										<b>Tổng tiền tạm tính: </b>
-										<span class="tien">
-											15.235.235 <span class="text_underline">đ</span>
-										</span>
+								<%
+									
+									if( isChuaTaoGioHang == true ){
+								%>
+									<div class="alert alert-danger">
+										<strong>Hiển thị popup: Vui lòng đăng nhập(Link đến controller dangNhapXemGioHang()) hoặc xác nhận SDT (Link đến controller xacNhanSdtXemGH) để xem giỏ hàng.</strong>Rồi đều Link đến server xemGioHang()
 									</div>
-									<div class="nut">
-										<a href="trangchu.jsp" class="btn btn-default mua_them">Mua thêm</a>
-										<button type="submit" class="btn  btn-default cap_nhat">Cập nhật</button>
-										<a href="dat_hang.jsp" class="btn  btn-default dat_hang">Tiến hành đặt hàng</a>
+								<%
+									
+									if( gioHang != null && gioHang.getSessionId() != null && !gioHang.getSessionId().equals("")){
+								%>
+									<div class="alert alert-danger">
+										<strong>Không có sản phẩm nào trong giỏ hàng.</strong> Nhấn <a href="${kyanhbooksRootPath }" class="text-a">"Quay lại"</a> để mua hàng !
 									</div>
-								</form>
+								<%
+									}else{
+										NumberFormat numberFormat = new DecimalFormat("###,###,###,###");
+										Map<String, Object> danhSachChiTietGioHang = (Map<String, Object>)gioHang.get("DanhSachChiTietGioHang");
+										if( danhSachChiTietGioHang != null ){
+								%>
+									<form action="/SachKyAnh/CapNhatGioHang" method="post" onsubmit="return ktSoLuongCapNhat();" id="gioHang" class="form_giohang">
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th>
+													Hình ảnh
+													</th>
+													<th>
+													Tên sách
+													</th>
+													<th>
+													Giá
+													</th>
+													<th>
+													Số lượng
+													</th>
+													<th>
+													Thành tiền
+													</th>
+													<th>
+													Xóa
+													</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%
+												Iterator iterator = danhSachChiTietGioHang.entrySet().iterator();
+												float tongTien = 0;
+												while( iterator.hasNext()){
+													Map.Entry ketQua = (Map.Entry)iterator.next();	
+													Map<String, Object> chiTietGioHang = (Map<String, Object>)ketQua.getValue();
+												%>
+												<tr>
+													<td class="hinh">
+														<img src="${url}/static/img/sanpham/<%=chiTietGioHang.get("UrlHinh") %>" alt="anh">
+													</td>
+													<td class="ten_sp">
+														<%=chiTietGioHang.get("TenSach") %>
+														<input type="hidden" name="TenSachHidden" value="<%=(String)chiTietGioHang.get("TenSach") %>" class="TenSachHidden" >
+													</td>
+													<td class="tien">
+														<%=numberFormat.format((float)chiTietGioHang.get("DonGia")) %> <span class="text_underline">đ</span>
+													</td>
+													<td class="so_luong">
+														<input type="number" name="soLuong" value="<%=(int)chiTietGioHang.get("SoLuong") %>" class="soLuong">
+														<input type="hidden" name="TSLDB" value="<%=(int)chiTietGioHang.get("TongSoLuongDB") %>" class="TongSoLuongDB" >
+													</td>
+													<td class="tien">
+														<%=numberFormat.format((int)chiTietGioHang.get("SoLuong")*(float)chiTietGioHang.get("DonGia")) %> <span class="text_underline">đ</span>
+													</td>
+													<td class="trash">
+														<a href="/SachKyAnh/XoaGioHang?MaSach=<%=ketQua.getKey()%>">
+															<span class="glyphicon glyphicon-trash"></span>
+														</a>
+													</td>
+												</tr>
+												<%
+												 tongTien += (int)chiTietGioHang.get("SoLuong")*(float)chiTietGioHang.get("DonGia");
+												}
+												%>
+											</tbody>
+										</table>
+										<div class="tong_tien">
+											<b>Tổng tiền tạm tính: </b>
+											<span class="tien">
+												<%=numberFormat.format(tongTien) %> <span class="text_underline">đ</span>
+											</span>
+										</div>
+										<div class="nut">
+											<a href="/SachKyAnh/XoaGioHang?MaSach=XoaTatCa" class="btn btn-default mua_them">Xóa giỏ hàng</a>
+											<button type="submit" class="btn  btn-default cap_nhat">Cập nhật</button>
+											<a href="/SachKyAnh/DatHang" class="btn  btn-default dat_hang">Tiến hành đặt hàng</a>
+										</div>
+									</form>
+									<%
+										}
+									}
+									%>
 						 	</section>
 						 	<!-- kt noi dung gio hang -->
 						</div>

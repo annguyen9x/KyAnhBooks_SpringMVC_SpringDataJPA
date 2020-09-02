@@ -1,75 +1,95 @@
 package com.annguyen.kyanhbooks.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class GioHang {
 	
-	@javax.persistence.Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id")
-	private int Id;
-	
-	@Column(name = "SessionId", unique = true)
-	private String sessionId;
+	@Id
+	@Column(name = "SessionIdGH")
+	//SessionId lưu SDT làm ID Giỏ hàng
+	private String sessionIdGH;
 	
 	@Column(name = "MaKH", unique = true)
-	private String maKH;
+	private int maKH;
 	
-	@Column(name = "DienThoai", unique = true)
+	@Column(name = "TenKH", nullable = false)
+	private String tenKH;
+	
+	@Column(name = "DienThoai", unique = true, nullable = false)
 	private String dienThoai;
 	
-	@Column(name = "HoTen")
-	private String hoTen;
+	@Column(name = "DiaChi")
+	private String diaChi;
 	
 	@Column(name = "MaSach")
 	private String maSach;
 	
 	@Column(name = "SoLuong")
-	private String soLuong;
+	private int soLuong;
 	
 	@Column(name = "DonGia")
-	private String donGia;
+	private float donGia;
+	
+	@Column(name = "SoHD")
+	private int soHD;
+	
+	@Column(name = "NgayTao")
+	private Date ngayTao;
+	
+	@Column(name = "NgayCapNhat")
+	private Date ngayCapNhat;
+	
+	@Column(name = "DaXoa")
+	private boolean daXoa;
 	
 	public GioHang() {
 	}
-
-	public GioHang( String sessionId, String maKH, String dienThoai, String hoTen, String maSach, String soLuong,
-			String donGia) {
-		this.sessionId = sessionId;
-		this.maKH = maKH;
-		this.dienThoai = dienThoai;
-		this.hoTen = hoTen;
+	
+	public GioHang(String maSach, int soLuong, float donGia) {
 		this.maSach = maSach;
 		this.soLuong = soLuong;
 		this.donGia = donGia;
 	}
-
-	public int getId() {
-		return Id;
+	
+	public GioHang(String sessionIdGH, int maKH, String tenKH, String dienThoai, String maSach,
+			int soLuong, float donGia, Date ngayTao) {
+		this.sessionIdGH = sessionIdGH;
+		this.maKH = maKH;
+		this.dienThoai = dienThoai;
+		this.tenKH = tenKH;
+		this.maSach = maSach;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+		this.ngayTao = ngayTao;
+	}
+	
+	public String getSessionIdGH() {
+		return sessionIdGH;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setSessionIdGH(String sessionIdGH) {
+		this.sessionIdGH = sessionIdGH;
 	}
 
-	public String getSessionId() {
-		return sessionId;
-	}
-
-	public void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
-	}
-
-	public String getMaKH() {
+	public int getMaKH() {
 		return maKH;
 	}
 
-	public void setMaKH(String maKH) {
+	public void setMaKH(int maKH) {
 		this.maKH = maKH;
+	}
+
+	public String getTenKH() {
+		return tenKH;
+	}
+
+	public void setTenKH(String tenKH) {
+		this.tenKH = tenKH;
 	}
 
 	public String getDienThoai() {
@@ -80,12 +100,12 @@ public class GioHang {
 		this.dienThoai = dienThoai;
 	}
 
-	public String getHoTen() {
-		return hoTen;
+	public String getDiaChi() {
+		return diaChi;
 	}
 
-	public void setHoTen(String hoTen) {
-		this.hoTen = hoTen;
+	public void setDiaChi(String diaChi) {
+		this.diaChi = diaChi;
 	}
 
 	public String getMaSach() {
@@ -96,20 +116,52 @@ public class GioHang {
 		this.maSach = maSach;
 	}
 
-	public String getSoLuong() {
+	public int getSoLuong() {
 		return soLuong;
 	}
 
-	public void setSoLuong(String soLuong) {
+	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
 
-	public String getDonGia() {
+	public float getDonGia() {
 		return donGia;
 	}
 
-	public void setDonGia(String donGia) {
+	public void setDonGia(float donGia) {
 		this.donGia = donGia;
+	}
+
+	public int getSoHD() {
+		return soHD;
+	}
+
+	public void setSoHD(int soHD) {
+		this.soHD = soHD;
+	}
+
+	public Date getNgayTao() {
+		return ngayTao;
+	}
+
+	public void setNgayTao(Date ngayTao) {
+		this.ngayTao = ngayTao;
+	}
+
+	public Date getNgayCapNhat() {
+		return ngayCapNhat;
+	}
+
+	public void setNgayCapNhat(Date ngayCapNhat) {
+		this.ngayCapNhat = ngayCapNhat;
+	}
+
+	public boolean isDaXoa() {
+		return daXoa;
+	}
+
+	public void setDaXoa(boolean daXoa) {
+		this.daXoa = daXoa;
 	}
 	
 }

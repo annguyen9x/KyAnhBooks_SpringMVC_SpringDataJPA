@@ -5,8 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.annguyen.kyanhbooks.model.KhachHang;
 import com.annguyen.kyanhbooks.util.myexception.ErrorConnectByInternet;
@@ -15,6 +13,8 @@ import com.annguyen.kyanhbooks.util.myexception.NotFoundException;
 public interface KhachHangService {
 	
 	KhachHang dangNhap(String email, String matKhau, HttpSession session) throws NotFoundException;
+	
+	KhachHang tuDongDangNhap(int maKH, HttpSession session);
 	
 	boolean insertKhachHang(KhachHang khachHang);
 	

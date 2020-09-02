@@ -56,6 +56,14 @@ public class KhachHangServiceImpl implements KhachHangService {
 		
 		return khachHang;
 	}
+	
+	@Override
+	public KhachHang tuDongDangNhap(int maKH, HttpSession session) {
+		KhachHang khachHang = khachHangRepository.getOne(maKH);
+		session.setAttribute("KhachHang", khachHang);
+		
+		return khachHang;
+	}
 
 	@Override
 	public boolean dangKy(KhachHang khachHang, String namSinh, String thangSinh, String ngaySinh, HttpSession session, Model model) {
@@ -241,5 +249,5 @@ public class KhachHangServiceImpl implements KhachHangService {
 		
 		return list;
 	}
-	
+
 }
