@@ -26,9 +26,9 @@ public interface KhachHangService {
 	
 	void dangXuat(HttpSession session);
 	
-	boolean layMaXacNhanEmail(String tieuDe, String noiDung, String email, HttpSession session, int loaiCongViecGuiEmail) throws ErrorConnectByInternet; 
+	boolean guiMaXacNhanEmail(String tieuDe, String noiDung, String email, HttpSession session, int loaiCongViecGuiEmail) throws ErrorConnectByInternet; 
 	
-	boolean xacNhanMaXacNhanEmail(String  maXacNhanTuClient, String email, HttpSession session, int loaiCongViecGuiEmail); 
+	boolean xacNhanMaXacNhanEmailHoacDienThoai(String  maXacNhanTuClient, String email, String dienThoai,HttpSession session, int loaiCongViecGuiMaXN); 
 	
 	List<Object[]> xemLichSuMuaHang(HttpSession session);
 	

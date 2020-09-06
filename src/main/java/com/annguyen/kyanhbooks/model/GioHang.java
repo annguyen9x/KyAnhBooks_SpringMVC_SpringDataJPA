@@ -6,15 +6,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.data.domain.Persistable;
+
 @Entity
-public class GioHang {
+public class GioHang{
 	
 	@Id
 	@Column(name = "SessionIdGH")
 	//SessionId lưu SDT làm ID Giỏ hàng
 	private String sessionIdGH;
 	
-	@Column(name = "MaKH", unique = true)
+	@Column(name = "MaKH")
 	private int maKH;
 	
 	@Column(name = "TenKH", nullable = false)
@@ -25,15 +27,6 @@ public class GioHang {
 	
 	@Column(name = "DiaChi")
 	private String diaChi;
-	
-	@Column(name = "MaSach")
-	private String maSach;
-	
-	@Column(name = "SoLuong")
-	private int soLuong;
-	
-	@Column(name = "DonGia")
-	private float donGia;
 	
 	@Column(name = "SoHD")
 	private int soHD;
@@ -50,21 +43,11 @@ public class GioHang {
 	public GioHang() {
 	}
 	
-	public GioHang(String maSach, int soLuong, float donGia) {
-		this.maSach = maSach;
-		this.soLuong = soLuong;
-		this.donGia = donGia;
-	}
-	
-	public GioHang(String sessionIdGH, int maKH, String tenKH, String dienThoai, String maSach,
-			int soLuong, float donGia, Date ngayTao) {
+	public GioHang(String sessionIdGH, int maKH, String tenKH, String dienThoai, Date ngayTao) {
 		this.sessionIdGH = sessionIdGH;
 		this.maKH = maKH;
 		this.dienThoai = dienThoai;
 		this.tenKH = tenKH;
-		this.maSach = maSach;
-		this.soLuong = soLuong;
-		this.donGia = donGia;
 		this.ngayTao = ngayTao;
 	}
 	
@@ -108,30 +91,6 @@ public class GioHang {
 		this.diaChi = diaChi;
 	}
 
-	public String getMaSach() {
-		return maSach;
-	}
-
-	public void setMaSach(String maSach) {
-		this.maSach = maSach;
-	}
-
-	public int getSoLuong() {
-		return soLuong;
-	}
-
-	public void setSoLuong(int soLuong) {
-		this.soLuong = soLuong;
-	}
-
-	public float getDonGia() {
-		return donGia;
-	}
-
-	public void setDonGia(float donGia) {
-		this.donGia = donGia;
-	}
-
 	public int getSoHD() {
 		return soHD;
 	}
@@ -163,5 +122,5 @@ public class GioHang {
 	public void setDaXoa(boolean daXoa) {
 		this.daXoa = daXoa;
 	}
-	
+
 }

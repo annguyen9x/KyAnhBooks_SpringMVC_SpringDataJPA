@@ -40,7 +40,9 @@ public class Constant {
 		public static final String USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY = "XacNhanEmailDangKy";
 		
 		public static final String USER_CONTROLLER_GIO_HANG_XEM = "XemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_XEM_RELOADING = "XemGioHangReloading";
 		public static final String USER_CONTROLLER_GIO_HANG_DANGNHAP_XEM = "DangNhapXemGioHang";
+		public static final String USER_CONTROLLER_GIO_HANG_GUI_MA_XACNHAN_SDT = "GuiMaXnSDTXemGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_XACNHAN_SDT_XEM = "XacNhanSDTXemGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_THEM_SP= "ThemSpVaoGioHang";
 		public static final String USER_CONTROLLER_GIO_HANG_CAPNHAT_SP = "CapNhatSpGioHang";
@@ -86,6 +88,9 @@ public class Constant {
 		public static final String TEN_THAMSO_EMAIL_GUI_HOADON_TIEU_DE = "XnEmailGuiHoaDon_TieuDe";
 		public static final String TEN_THAMSO_EMAIL_GUI_HOADON_NOI_DUNG = "XnEmailGuiHoaDon_NoiDung";
 		
+		public static final String TEN_THAMSO_XN_SDT_XEM_GH_TIEU_DE = "XacNhanSdtXemGH_TieuDe";
+		public static final String TEN_THAMSO_XN_SDT_XEM_GH_NOI_DUNG = "XacNhanSdtXemGH_NoiDung";
+		
 		//Phân trang
 		public static final String TEN_THAMSO_LIMIT_SP_THEO_LOAISP = "SoSP_Theo_LoaiSP_Tren_Mot_Trang";
 		public static final String TEN_THAMSO_SOTRANG_SP_NHIN_THAY_THEO_LOAISP = "SoTrangSP_NhinThay_Theo_LoaiSP";
@@ -109,6 +114,9 @@ public class Constant {
 		public static final String GIA_TRI_EMAIL_XN_QUEN_MATKHAU_NOI_DUNG = "Mã xác nhận email đăng nhập: ";
 		public static final String GIA_TRI_EMAIL_GUI_HOADON_TIEU_DE = "";
 		public static final String GIA_TRI_EMAIL_GUI_HOADON_NOI_DUNG = "";
+		
+		public static final String GIA_TRI_XN_SDT_XEM_GH_TIEU_DE = "Xác nhận sđt mua hàng tại [kyanhbooks.com]";
+		public static final String GIA_TRI_XN_SDT_XEM_GH_NOI_DUNG = "Mã xác nhận sđt: ";
 		
 		//Phân trang
 		public static final int GIA_TRI_LIMIT_SP_THEO_LOAISP = 2; 
@@ -149,6 +157,8 @@ public class Constant {
 		public static final String JSESSIONID = "JSESSIONID";
 		public static final String TIENTO_JSESSIONID = "sessionid-";
 		public static final String CHUA_TAO_GIOHANG = "ChuaTaoGioHang";
+		public static final String GIOHANG_SESSION = "GioHangSession";
+		public static final String GIOHANG_TONG_SP_TRONG_GH = "TongSpTrongGH";
 	}
 	
 	//Định dạng tiền
@@ -186,15 +196,17 @@ public class Constant {
 	}
 	
 	//Form
-	public interface Form{
+	public interface RegularExpression{
 		public static final String REG_MAIL = "/^[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*@[a-zA-Z0-9]+([_\\.\\-]?[A-Za-z0-9])*(\\.[A-Za-z]+)+$/";
+		public static final String REG_SDT = "/^0[1-9]{1}[0-9]{8}$/";
 	}
 	
 	//Các loại công việc gửi Email
-	public interface Email{
-		public static final int LOAI_CONG_VIEC_GUI_EMAIL_QMK = 1;//Quên mật khẩu
-		public static final int LOAI_CONG_VIEC_GUI_EMAIL_XNDK = 2;//Xác nhận đăng ký
-		public static final int LOAI_CONG_VIEC_GUI_EMAIL_TTDH = 3;//Thông tin đơn hàng
+	public interface LoaiCongViecGuiMaXN{
+		public static final int LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK = 1;//Quên mật khẩu
+		public static final int LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK = 2;//Xác nhận đăng ký
+		public static final int LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_TTDH = 3;//Thông tin đơn hàng
+		public static final int LOAI_CONG_VIEC_GUI_MA_XN_DIENTHOAI_XEM_GH = 4;//Xác nhận SĐT xem giỏ hàng
 	}
 	
 }

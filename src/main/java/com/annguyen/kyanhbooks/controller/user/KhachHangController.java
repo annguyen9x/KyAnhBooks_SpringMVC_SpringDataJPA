@@ -77,11 +77,11 @@ public class KhachHangController {
 	public String layMaXacNhanEmailKhiDangKy(KhachHang khachHang, HttpSession session) {
 		String tieuDe = Constant.CauHinh.GIA_TRI_EMAIL_XN_DANGKY_TIEU_DE;
 		String noiDung = Constant.CauHinh.GIA_TRI_EMAIL_XN_DANGKY_NOI_DUNG;
-		int loaiCongViecGuiEmail = Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK;
+		int loaiCongViecGuiEmail = Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK;
 		String email = khachHang.getEmail();
 		
 		try {
-			khachHangService.layMaXacNhanEmail(tieuDe, noiDung, email, session, loaiCongViecGuiEmail);
+			khachHangService.guiMaXacNhanEmail(tieuDe, noiDung, email, session, loaiCongViecGuiEmail);
 		} catch (ErrorConnectByInternet e) {
 			session.setAttribute("LoiGuiEmailXnTuServer", e.getMessage());
 			e.printStackTrace();
@@ -93,8 +93,8 @@ public class KhachHangController {
 	@RequestMapping(value = "/" + Constant.Path.USER_CONTROLLER_XAC_NHAN_EMAIL_DANG_KY , method = RequestMethod.POST)
 	public String xacNhanXacNhanEmailKhiDangKy(@RequestParam("maXN") String  maXacNhanTuClient, @RequestParam("email") String email, HttpSession session) {
 		
-		int loaiCongViecGuiEmail = Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK;
-		khachHangService.xacNhanMaXacNhanEmail(maXacNhanTuClient, email, session, loaiCongViecGuiEmail);
+		int loaiCongViecGuiEmail = Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK;
+		khachHangService.xacNhanMaXacNhanEmailHoacDienThoai(maXacNhanTuClient, email, null,session, loaiCongViecGuiEmail);
 		
 		return "xacthuc_dangky";
 	}
@@ -146,9 +146,9 @@ public class KhachHangController {
 		
 		String tieuDe = Constant.CauHinh.GIA_TRI_EMAIL_XN_QUEN_MATKHAU_TIEU_DE;
 		String noiDung = Constant.CauHinh.GIA_TRI_EMAIL_XN_QUEN_MATKHAU_NOI_DUNG;
-		int loaiCongViecGuiEmail = Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK;
+		int loaiCongViecGuiEmail = Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK;
 		try {
-			khachHangService.layMaXacNhanEmail(tieuDe, noiDung, email, session, loaiCongViecGuiEmail);
+			khachHangService.guiMaXacNhanEmail(tieuDe, noiDung, email, session, loaiCongViecGuiEmail);
 		} catch (ErrorConnectByInternet e) {
 			session.setAttribute("LoiGuiEmailXnTuServer", e.getMessage());
 			e.printStackTrace();
@@ -159,8 +159,8 @@ public class KhachHangController {
 	@RequestMapping(value = "/" + Constant.Path.USER_CONTROLLER_XAC_NHAN_EMAIL_QUEN_MATKHAU , method = RequestMethod.POST)
 	public String xacNhanXacNhanEmailKhiQuenMatKhau(@RequestParam("maXN") String  maXacNhanTuClient, @RequestParam("emailHidden") String email, HttpSession session) {
 		
-		int loaiCongViecGuiEmail = Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK;
-		khachHangService.xacNhanMaXacNhanEmail(maXacNhanTuClient, email, session, loaiCongViecGuiEmail);
+		int loaiCongViecGuiEmail = Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK;
+		khachHangService.xacNhanMaXacNhanEmailHoacDienThoai(maXacNhanTuClient, email, null,session, loaiCongViecGuiEmail);
 		
 		return "quen_matkhau";
 	}

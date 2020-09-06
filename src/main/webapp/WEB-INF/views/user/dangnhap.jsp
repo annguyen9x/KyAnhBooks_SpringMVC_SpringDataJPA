@@ -140,7 +140,7 @@
 			var hople = true;
 			var email = $('#email').val();
 			var matkhau = $('#matkhau').val();
-			var reg_mail= <%=Constant.Form.REG_MAIL%>;
+			var reg_mail= <%=Constant.RegularExpression.REG_MAIL%>;
 			if( reg_mail.test(email) == false ){
 				$("#errorEmail").html("Email không đúng định dạng !");
 				if( hople ){

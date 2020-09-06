@@ -17,7 +17,8 @@ public interface KhachHangRepository extends JpaRepository<KhachHang, Integer> {
 			+ "HoaDon.SoHD, TongTien, NgayDat, NgayGiao, TinhTrangDH, MaNVGiao, "
 			+ "HoaDon.TenNN, HoaDon.DienThoaiNN, HoaDon.DiaChiNN, HoaDon.MaKH, "
 			+ "KhachHang.TenKH, KhachHang.Email, KhachHang.DienThoai, KhachHang.DiaChi "
-			+ "From HoaDon Inner Join KhachHang "
+			+ "From HoaDon "
+			+ "Inner Join KhachHang "
 			+ "On HoaDon.MaKH = KhachHang.MaKH "
 			+ "Where HoaDon.MaKH= ? ")
 	List<Object[]> findHoaDonAndKhachHangByMaKH(int maKH);

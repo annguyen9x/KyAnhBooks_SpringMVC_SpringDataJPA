@@ -5,6 +5,7 @@
         <class>com.annguyen.kyanhbooks.model.HoaDon</class> 
         <class>com.annguyen.kyanhbooks.model.KhachHang</class>
         <class>com.annguyen.kyanhbooks.model.GioHang</class>
+        <class>com.annguyen.kyanhbooks.model.ChiTietGioHang</class>
         <class>com.annguyen.kyanhbooks.model.LoaiSach</class>
        <!-- 
         <class>com.annguyen.kyanhbooks.model.NhanVien</class>

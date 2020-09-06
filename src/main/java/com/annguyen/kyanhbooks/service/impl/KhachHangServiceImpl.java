@@ -2,6 +2,7 @@ package com.annguyen.kyanhbooks.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -53,7 +54,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 		else {
 			session.setAttribute("KhachHang", khachHang);
 		}
-		
+		System.out.println("dangNhap-khachHang: " + khachHang);
 		return khachHang;
 	}
 	
@@ -110,6 +111,10 @@ public class KhachHangServiceImpl implements KhachHangService {
 		if( session.getAttribute("KhachHang") != null ) {
 			session.removeAttribute("KhachHang");
 		}
+		if( session.getAttribute(Constant.GioHang.GIOHANG_SESSION) != null ) {
+			session.removeAttribute(Constant.GioHang.GIOHANG_SESSION);
+		}
+		
 	}
 
 	@Override
@@ -157,10 +162,10 @@ public class KhachHangServiceImpl implements KhachHangService {
 	}
 
 	@Override
-	public boolean layMaXacNhanEmail(String tieuDe, String noiDung, String email, HttpSession session, int loaiCongViecGuiEmail) throws ErrorConnectByInternet {
+	public boolean guiMaXacNhanEmail(String tieuDe, String noiDung, String email, HttpSession session, int loaiCongViecGuiEmail) throws ErrorConnectByInternet {
 		
 		KhachHang khachHang	= null;
-		if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK ) {
+		if( loaiCongViecGuiEmail == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK ) {
 			khachHang	= khachHangRepository.findKhachHangByEmail(email);
 			if( khachHang == null ) {
 				session.setAttribute("KiemTraEmailDangNhap", "EmailKhongTonTai");
@@ -177,13 +182,13 @@ public class KhachHangServiceImpl implements KhachHangService {
 		if( GuiMail.guiMail(email, tieuDe, noiDung, emailShop, matKhauEmailShop) == true ) {
 			System.out.println("layMaXacNhanEmail-maXacNhanTuServer: " + maXacNhan);
 			
-			if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK ) {
+			if( loaiCongViecGuiEmail == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK ) {
 				session.setAttribute("MaXacNhanQMK", maXacNhan);
 				session.setAttribute("Email", email);
 				session.setAttribute("KhachHang"+ maXacNhan, khachHang);
 				session.setAttribute("KiemTraEmailDangNhap", "EmailTonTai");
 			}
-			else if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK ) {
+			else if( loaiCongViecGuiEmail == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK ) {
 				session.setAttribute("MaXacNhan", maXacNhan);
 			}
 		}else {
@@ -194,18 +199,22 @@ public class KhachHangServiceImpl implements KhachHangService {
 	}
 
 	@Override
-	public boolean xacNhanMaXacNhanEmail(String maXacNhanTuClient, String email, HttpSession session, int loaiCongViecGuiEmail) {
+	public boolean xacNhanMaXacNhanEmailHoacDienThoai(String maXacNhanTuClient, String email, String dienThoai, HttpSession session, int loaiCongViecGuiMaXN) {
+		boolean isResult = false;
 		String maXacNhanTuServer = "";
-		if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK ) {
+		if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK ) {
 			maXacNhanTuServer = (String)session.getAttribute("MaXacNhanQMK");
 		}
-		else if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK ) {
+		else if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK ) {
 			maXacNhanTuServer = (String)session.getAttribute("MaXacNhan");
 		}
+		else if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_DIENTHOAI_XEM_GH ) {
+			maXacNhanTuServer = (String)session.getAttribute("MaXnSdtXemGH");
+		}
 		
-		if(maXacNhanTuServer.equals(maXacNhanTuClient)) {
-			
-			if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK ) {
+		if(maXacNhanTuServer.equals(maXacNhanTuClient) && !maXacNhanTuServer.equals("")) {
+			isResult = true;
+			if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK ) {
 				session.setAttribute("xacNhanDangNhapQMK", "mxnChinhXac");
 				if( session.getAttribute("KhachHang" + maXacNhanTuServer) != null ) {
 					KhachHang khachHang = (KhachHang)session.getAttribute("KhachHang" + maXacNhanTuServer);
@@ -217,7 +226,7 @@ public class KhachHangServiceImpl implements KhachHangService {
 					session.removeAttribute("KiemTraEmailDangNhap");
 				}
 			}
-			else if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK ) {
+			else if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK ) {
 				KhachHang khachHang = (KhachHang)session.getAttribute("TaiKhoanDK");
 				if( insertKhachHang(khachHang) == true ) {
 					session.setAttribute("dKThanhCong", "Đăng ký tài khoản khách hàng thành công.");
@@ -227,17 +236,24 @@ public class KhachHangServiceImpl implements KhachHangService {
 				}
 				session.removeAttribute("MaXacNhan");
 			}
+			else if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_DIENTHOAI_XEM_GH ) {
+				KhachHang khachHang = khachHangRepository.findKhachHangByDienThoai(dienThoai);
+				if( khachHang != null ) {
+					session.setAttribute("KhachHang", khachHang);
+				}
+				session.removeAttribute("MaXnSdtXemGH");
+			}
 		}
 		else {
-			if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_QMK ) {
+			if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_QMK ) {
 				session.setAttribute("xacNhanDangNhapQMK", "mxnSai");
 			}
-			else if( loaiCongViecGuiEmail == Constant.Email.LOAI_CONG_VIEC_GUI_EMAIL_XNDK ) {
+			else if( loaiCongViecGuiMaXN == Constant.LoaiCongViecGuiMaXN.LOAI_CONG_VIEC_GUI_MA_XN_EMAIL_XNDK ) {
 				session.setAttribute("maXacNhanDKSai", "Mã xác nhận không chính xác, mời nhập lại !");
 			}
 		}
 		
-		return true;
+		return isResult;
 	}
 
 	@Override
